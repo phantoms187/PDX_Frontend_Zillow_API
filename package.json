@@ -1,0 +1,19 @@
+{
+  "name": "pdx_frontend_zillow_api",
+  "version": "1.0.0",
+  "description": "PDX CS510 Final Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phantoms187/PDX_Frontend_Zillow_API.git"
+  },
+  "author": "Mi Yo Kim & David Davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phantoms187/PDX_Frontend_Zillow_API/issues"
+  },
+  "homepage": "https://github.com/phantoms187/PDX_Frontend_Zillow_API#readme"
+}
