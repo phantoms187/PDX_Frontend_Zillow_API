@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/phantoms187/PDX_Frontend_Zillow_API/issues"
   },
-  "homepage": "https://github.com/phantoms187/PDX_Frontend_Zillow_API#readme"
+  "homepage": "https://github.com/phantoms187/PDX_Frontend_Zillow_API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.2",
+    "node-geocoder": "^3.25.0"
+  }
 }
