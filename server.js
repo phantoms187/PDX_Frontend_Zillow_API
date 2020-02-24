@@ -5,10 +5,12 @@ const cors = require('cors');
 const path = require("path");
 const request = require('request');
 var moment = require('moment');
+var Zillow = require('node-zillow');
 
 
 const port = process.env.PORT || 4000;
-const darkSkyAPI = process.env.darkSky; //For weather info
+const darkSkyAPI = process.env.darkSkyAPI; //For weather info
+var zillowAPI = new Zillow(process.env.zillowAPI);
 
 var NodeGeocoder = require('node-geocoder');
 var options = {
