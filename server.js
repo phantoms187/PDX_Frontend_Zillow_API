@@ -55,7 +55,7 @@ app.post('/weather', (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, './client/pdx-zillow-api/build/index.html'));
+    res.sendFile(path.join(__dirname, 'client/pdx-zillow-api/build/index.html'));
 });
 
 app.listen(port, () =>{
