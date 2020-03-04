@@ -3,7 +3,6 @@ import './Walkscore.css';
 
 
 function addDescription(score) {
-  console.log(score);
   if (Number(score) <= 24)
     return "Almost all errands require a car.";
   else if ( Number(score) <= 49)
@@ -23,7 +22,7 @@ function Walkscore({score, description}){
     <section className="walkscore_data">
       <div className="walkscore_score box">
         <h5>walkscore</h5>
-        <h1>44</h1>
+        <h1>{score}</h1>
       </div>
       <div className="walkscore_desc_all box">
         <div className="walkscore_desc box">

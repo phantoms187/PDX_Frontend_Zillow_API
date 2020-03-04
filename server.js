@@ -70,6 +70,20 @@ app.get('/walkscore', (req, res) => {
       
 });
 
+app.get('/bikescore', (req, res) => {
+  //url shown in walk score api example page.
+  let url = `http://api.walkscore.com/score?format=json&address=1119%8th%20Avenue%20Seattle%20WA%2098101&lat=47.6085&lon=-122.3295&transit=1&bike=1&wsapikey=${walkScoreAPI}`
+  axios.get(url)
+    .then( (response) => {
+      console.log(response.data.bike);
+      res.send(response.data.bike);  
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+      
+});
+
 
 // app.post('/walkscore', (req, res) => {
 
