@@ -84,6 +84,21 @@ app.get('/bikescore', (req, res) => {
       
 });
 
+app.get('/zillow', (req, res) => {
+  var parameters = {
+    zpid: 48690106
+  };
+   
+  zillowAPI.get('GetZestimate', parameters)
+    .then(function(results) {
+      console.log(results);
+      // results here is an object { message: {}, request: {}, response: {}} 
+    })
+
+    
+      
+});
+
 
 // app.post('/walkscore', (req, res) => {
 
