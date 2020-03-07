@@ -11,14 +11,14 @@ const Zillow = require('node-zillow');
 
 dotenv.config();
 const port = process.env.PORT || 4000;
-const darkSkyAPI = process.env.darkSkyAPI; //For weather info
+const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349"; //For weather info
 var zillowAPI = new Zillow(process.env.zillowAPI);
-const walkScoreAPI = process.env.walkScoreAPI; 
+const walkScoreAPI = process.env.walkScoreAPI;
 
 var NodeGeocoder = require('node-geocoder');
 var options = {
   provider: 'opencage',
-  apiKey: process.env.openCageAPI
+  apiKey: process.env.openCageAPI || "464ba334d812473fa18bc2b34e8ad854"
 };
 var geocoder = NodeGeocoder(options);
 function getCoordinates(place) {
@@ -62,12 +62,12 @@ app.get('/walkscore', (req, res) => {
   let url = `http://api.walkscore.com/score?format=json&address=1119%8th%20Avenue%20Seattle%20WA%2098101&lat=47.6085&lon=-122.3295&transit=1&bike=1&wsapikey=${walkScoreAPI}`
   axios.get(url)
     .then( (response) => {
-      res.send(response.data);  
+      res.send(response.data);
     })
     .catch((err)=>{
       console.log(err);
     });
-      
+
 });
 
 app.get('/bikescore', (req, res) => {
@@ -76,12 +76,27 @@ app.get('/bikescore', (req, res) => {
   axios.get(url)
     .then( (response) => {
       console.log(response.data.bike);
-      res.send(response.data.bike);  
+      res.send(response.data.bike);
     })
     .catch((err)=>{
       console.log(err);
     });
-      
+
+});
+
+app.get('/zillow', (req, res) => {
+  var parameters = {
+    zpid: 48690106
+  };
+
+  zillowAPI.get('GetZestimate', parameters)
+    .then(function(results) {
+      console.log(results);
+      // results here is an object { message: {}, request: {}, response: {}}
+    })
+
+
+
 });
 
 
