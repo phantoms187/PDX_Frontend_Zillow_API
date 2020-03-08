@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Skycons from 'react-skycons';
-
-
 import './WeatherIcon.css';
 
 class WeatherIcon extends Component{
@@ -9,28 +7,17 @@ class WeatherIcon extends Component{
   constructor(props){
     super(props);
     this.state = {
-      weatherIcon:'',
-      weatherForecast: '',
-      isLoading: false
-    }
+      weatherIcon: this.props.weatherIcon,
+      weatherForecast: this.props.weatherForecast,
+    };
   }
-
-  // componentDidMount(){
-  //
-  //   this.setState({ isLoading: true });
-  //
-  //   fetch('/weather')
-  //     .then(res => res.json())
-  //     .then(weatherRequested => this.setState({ weatherIcon: (weatherRequested.currently.icon).toUpperCase().replace(/-/g,'_'), weatherForecast: weatherRequested.currently.summary}))
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
 
 render() {
   return (
     <div className = "container my-skycon">
-      <Skycons color='black' icon="SNOW" autoplay={true}/>
+        <h6 className="weather-header">Current Weather:</h6>
+        <Skycons color='black' icon={this.state.weatherIcon} autoplay={true}/>
+        <h3>{this.state.weatherForecast}</h3>
     </div>
   )}
 }

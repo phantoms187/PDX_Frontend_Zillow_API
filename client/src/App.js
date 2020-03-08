@@ -15,7 +15,6 @@ function App() {
 
     <HashRouter>
       <Navigation />
-      <WeatherIcon />
       <Route path="/" exact={true} component={Home} />
       <Route path="/search" exact={true} component={Search} />
       <Route path="/walkscore" exact={true} component={AboutWS} />
