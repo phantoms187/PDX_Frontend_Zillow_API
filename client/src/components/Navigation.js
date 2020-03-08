@@ -8,15 +8,15 @@ class Navigation extends Component {
 
   render() {
     return (
-      <nav class="navbar navbar-expand-md my-nav">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+      <nav className="navbar navbar-expand-md my-nav">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
                 <Link to={'/'} className="nav-link my-nav-link">Home</Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                <Link to={'/search'} className="nav-link my-nav-link">Search</Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                <Link to={'/options'} className="nav-link my-nav-link">Options</Link>
             </li>
           </ul>

@@ -4,6 +4,7 @@ import { Link } from  "react-router-dom"
 function Home() {
   return (
   <div>
+    
     <div>
       <Link to="/walkscore">Walk Score</Link>
     </div>
