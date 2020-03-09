@@ -52,19 +52,19 @@ app.post('/weather', (req, res) => {
     let long = '';
     let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
     let time = moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
-    
+
     (async () => {
       const geoCoordinates = await getCoordinates(place);
         lat = geoCoordinates[0].latitude;
         long = geoCoordinates[0].longitude;
-        request('https://api.darksky.net/forecast/' + darkSkyAPI + '/' + lat +',' + long, function (error, response, body) {
+        request('https://api.darksky.net/forecast/' + darkSkyAPI + '/' + lat +',' + long + ',' + time, function (error, response, body) {
             const newBody = JSON.parse(body);
             res.json(newBody);
         });
         lat = '';
         long = '';
     })();
-    
+
 });
 
 

@@ -13,21 +13,27 @@ class App extends Component {
    constructor() {
     super();
     this.state = {
+      street: '',
       city: '',
       state: '',
-      zip: ''
+      zip: '',
+      weather: '',
+      icon: '',
     };
   }
 
   getLocation = (locationData) => {
     if(locationData) {
       this.setState({
+        street: locationData.street,
         city: locationData.city,
         state: locationData.state,
-        zip: locationData.zip
+        zip: locationData.zip,
+        weather: locationData.weather,
+        icon: locationData.icon
       });
-      console.log("It's working");
     }
+    console.log("Well?");
   }
 
   render (){
@@ -35,7 +41,7 @@ class App extends Component {
 
       <HashRouter>
         <Navigation />
-        <Route path="/" exact={true}> <Home city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
+        <Route path="/" exact={true}> <Home icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
         <Route path="/search" exact={true}> <Search giveLocationData={this.getLocation}/> </Route>
         <Route path="/walkscore" exact={true} component={AboutWS} />
         <Route path="/bikescore" exact={true} component={AboutBS} />

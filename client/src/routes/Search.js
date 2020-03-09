@@ -29,6 +29,7 @@ class Search extends Component {
 
   giveLocationData = () => {
     const locationData = {
+      street: this.state.locationStreet,
       city: this.state.locationCity,
       state: this.state.locationState,
       zip: this.state.locationZip,
@@ -48,8 +49,6 @@ class Search extends Component {
   //When the form is submitted, set object to post with axios
   onSubmit = e => {
 
-    this.giveLocationData();
-    this.props.history.push("/");
     e.preventDefault();
 
     const place = {
@@ -69,6 +68,11 @@ class Search extends Component {
               weather: response.data.currently.summary,
               icon: (response.data.currently.icon).toUpperCase().replace(/-/g,'_'),
           });
+
+    })
+    .then( () => {
+      this.giveLocationData();
+      this.props.history.push("/");
     })
     .catch((error) => {
         console.log(error);
