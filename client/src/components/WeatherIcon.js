@@ -15,7 +15,7 @@ class WeatherIcon extends Component{
 render() {
   return (
     <div className = "container my-skycon">
-        <h6 className="weather-header">Current Weather:</h6>
+        <h6 className="weather-header">Weather:</h6>
         <Skycons color='black' icon={this.state.weatherIcon} autoplay={true}/>
         <h3>{this.state.weatherForecast}</h3>
     </div>
