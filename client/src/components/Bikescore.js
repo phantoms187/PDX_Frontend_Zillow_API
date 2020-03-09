@@ -37,7 +37,7 @@ class BikeScore extends React.Component {
           </div>
         </div>
       </section>
-      <Collapsible trigger="How Bike Score Works">
+      <Collapsible className="bikescore_detail" trigger="How Bike Score Works">
         <p><h4>90–100: </h4>Biker’s Paradise<br></br>
         Daily errands can be accomplished on a bike</p>
         <p><h4>70–89: </h4>Very Bikeable<br></br>

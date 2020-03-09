@@ -58,27 +58,51 @@ app.post('/weather', (req, res) => {
 });
 
 app.get('/walkscore', (req, res) => {
-  //url shown in walk score api example page.
-  let url = `http://api.walkscore.com/score?format=json&address=1119%8th%20Avenue%20Seattle%20WA%2098101&lat=47.6085&lon=-122.3295&transit=1&bike=1&wsapikey=${walkScoreAPI}`
-  axios.get(url)
-    .then( (response) => {
-      res.send(response.data);  
+  let lat = undefined;
+  let lon = undefined;
+  let place = '521 SW 200th Ave';
+
+  
+  geocoder.geocode(place)
+    .then(function(geores) {
+      lat = geores[0].latitude;
+      lon = geores[0].longitude;
+      let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&wsapikey=${walkScoreAPI}`;
+      axios.get(url)
+        .then( (response) => {
+          res.send(response.data);  
+        })
+        .catch((err)=>{
+          console.log(err);
+        });
     })
-    .catch((err)=>{
+    .catch(function(err) {
       console.log(err);
     });
-      
-});
+    
+  });
 
 app.get('/bikescore', (req, res) => {
-  //url shown in walk score api example page.
-  let url = `http://api.walkscore.com/score?format=json&address=1119%8th%20Avenue%20Seattle%20WA%2098101&lat=47.6085&lon=-122.3295&transit=1&bike=1&wsapikey=${walkScoreAPI}`
-  axios.get(url)
-    .then( (response) => {
-      console.log(response.data.bike);
-      res.send(response.data.bike);  
+  let lat = undefined;
+  let lon = undefined;
+  let place = '521 SW 200th Ave';
+
+  
+  geocoder.geocode(place)
+    .then(function(geores) {
+      lat = geores[0].latitude;
+      lon = geores[0].longitude;
+      let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&transit=1&bike=1&wsapikey=${walkScoreAPI}`;
+      axios.get(url)
+        .then( (response) => {
+          console.log(response.data.bike);
+          res.send(response.data.bike);  
+        })
+        .catch((err)=>{
+          console.log(err);
+        });
     })
-    .catch((err)=>{
+    .catch(function(err) {
       console.log(err);
     });
       
@@ -100,26 +124,6 @@ app.get('/zillow', (req, res) => {
 });
 
 
-// app.post('/walkscore', (req, res) => {
-
-//   let lat = '';
-//   let lon = '';
-//   let place = '';
-
-//   async () => {
-//     const geoCoordinates = await getCoordinates(place);
-//       lat = geoCoordinates[0].latitude;
-//       lon = geoCoordinates[0].longitude;
-//       console.log("lat: " +lat);
-//       console.log("long: " +long);
-//       request(`http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&wsapikey=${walkScoreAPI}`,  (error, response, body) => {
-//          const newBody = JSON.parse(body);
-//          res.json(newBody);
-//       });
-//       lat = '';
-//       long = '';
-//   };
-// });
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build/index.html'));

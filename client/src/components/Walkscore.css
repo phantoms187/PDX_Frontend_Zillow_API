@@ -18,9 +18,7 @@ h5 {
   width: 80px;
   height: 80px;
   border-radius: 20%;
-  border: 2px solid #BDFF75;
-
-  
+  border: 2px solid #FCF36F;
 }
 .walkscore_desc_all {
   display: flex;

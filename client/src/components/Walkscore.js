@@ -39,7 +39,7 @@ class Walkscore extends React.Component {
           </div>
         </div>
       </section>
-      <Collapsible trigger="How Walk Score Works">
+      <Collapsible className="walkscore_detail" trigger="How Walk Score Works">
         <p><h4>90–100: </h4>Walker’s Paradise<br></br>
            Daily errands do not require a car</p>
         <p><h4>70–89: </h4>Very Walkable<br></br>
