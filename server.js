@@ -10,12 +10,6 @@ const axios = require('axios');
 const Zillow = require('node-zillow');
 const fetch = require('node-fetch');
 
-
-const DarkSky = require('dark-sky');
-
-const darksky = new DarkSky("50bf69053e2a6f09b468d70eba530349");
-
-
 dotenv.config();
 const port = process.env.PORT || 4000;
 const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349"; //For weather info
@@ -51,13 +45,13 @@ app.post('/weather', (req, res) => {
     let lat = '';
     let long = '';
     let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
-    let time = moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
+    let time = "," + moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
 
     (async () => {
       const geoCoordinates = await getCoordinates(place);
         lat = geoCoordinates[0].latitude;
         long = geoCoordinates[0].longitude;
-        request('https://api.darksky.net/forecast/' + darkSkyAPI + '/' + lat +',' + long + ',' + time, function (error, response, body) {
+        request('https://api.darksky.net/forecast/' + darkSkyAPI + '/' + lat +',' + long, function (error, response, body) {
             const newBody = JSON.parse(body);
             res.json(newBody);
         });
