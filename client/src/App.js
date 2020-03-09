@@ -18,23 +18,25 @@ class App extends Component {
       zip: ''
     };
   }
-  
+
   getLocation = (locationData) => {
-    this.setState({
-      city: locationData.city,
-      state: locationData.state,
-      zip: locationData.zip
-    });
-    console.log("It's working");
+    if(locationData) {
+      this.setState({
+        city: locationData.city,
+        state: locationData.state,
+        zip: locationData.zip
+      });
+      console.log("It's working");
+    }
   }
-  
+
   render (){
     return (
-  
+
       <HashRouter>
         <Navigation />
-        <Route path="/" exact={true}> <Home city={this.state.city}/></Route>
-        <Route path="/search" exact={true}> <Search giveLocationData={this.getLocation()} /> </Route>
+        <Route path="/" exact={true}> <Home city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
+        <Route path="/search" exact={true}> <Search giveLocationData={this.getLocation}/> </Route>
         <Route path="/walkscore" exact={true} component={AboutWS} />
         <Route path="/bikescore" exact={true} component={AboutBS} />
       </HashRouter>

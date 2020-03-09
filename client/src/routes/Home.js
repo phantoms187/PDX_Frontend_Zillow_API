@@ -5,18 +5,18 @@ import Search from './Search';
 
 
 class Home extends Component {
-  
+
   constructor() {
     super();
   }
-  
-  
-  
+
+
+
   render (){
     return (
     <div>
-      <h1>{this.props.city}</h1>
-      <WeatherIcon weatherIcon="SNOW" weatherForecast="Snow" /> 
+      <h1>{this.props.weather}</h1>
+      <WeatherIcon weatherIcon="SNOW" weatherForecast="Snow" />
       <div>
         <Link to="/walkscore">Walk Score</Link>
       </div>

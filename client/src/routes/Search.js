@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { withRouter } from 'react-router-dom'
 
 
 
@@ -25,14 +26,16 @@ class Search extends Component {
           errors: {}
       };
   }
-  
+
   giveLocationData = () => {
     const locationData = {
       city: this.state.locationCity,
       state: this.state.locationState,
-      zip: this.state.locationZip
+      zip: this.state.locationZip,
+      weather: this.state.weather,
+      icon: this.state.icon
     };
-    this.props.getLocation(locationData);
+    this.props.giveLocationData(locationData);
   }
 
 
@@ -44,6 +47,9 @@ class Search extends Component {
 
   //When the form is submitted, set object to post with axios
   onSubmit = e => {
+
+    this.giveLocationData();
+    this.props.history.push("/");
     e.preventDefault();
 
     const place = {
@@ -208,4 +214,4 @@ class Search extends Component {
 
 }
 
-export default Search;
+export default withRouter(Search);
