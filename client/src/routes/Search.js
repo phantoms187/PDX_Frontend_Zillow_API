@@ -25,6 +25,15 @@ class Search extends Component {
           errors: {}
       };
   }
+  
+  giveLocationData = () => {
+    const locationData = {
+      city: this.state.locationCity,
+      state: this.state.locationState,
+      zip: this.state.locationZip
+    };
+    this.props.getLocation(locationData);
+  }
 
 
 
@@ -33,9 +42,7 @@ class Search extends Component {
     this.setState({ [e.target.id]: e.target.value });
   }
 
-
-
-//When the form is submitted, set object to post with axios
+  //When the form is submitted, set object to post with axios
   onSubmit = e => {
     e.preventDefault();
 

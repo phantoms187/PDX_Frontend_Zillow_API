@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from  "react-router-dom";
 import WeatherIcon from '../components/WeatherIcon';
+import Search from './Search';
 
 
 class Home extends Component {
@@ -9,9 +10,12 @@ class Home extends Component {
     super();
   }
   
+  
+  
   render (){
     return (
     <div>
+      <h1>{this.props.city}</h1>
       <WeatherIcon weatherIcon="SNOW" weatherForecast="Snow" /> 
       <div>
         <Link to="/walkscore">Walk Score</Link>
