@@ -1,0 +1,47 @@
+h1, h3, h4 {
+  margin:3px;
+}
+h5 {
+  margin:10px;
+}
+.bikescore_data {
+  display: flex;
+  flex-direction: row;
+  align-content:flex-start;
+  flex-wrap: wrap;
+  width: 500px;
+  height: 80px;
+  margin: 10px;
+  text-align: center;
+}
+.bikescore_score {
+  width: 80px;
+  height: 80px;
+  border-radius: 20%;
+  border: 2px solid #184981;
+  background-color: #1E61AD;
+  color: white;
+  
+}
+.bikescore_desc_all {
+  display: flex;
+  flex-direction: column;
+  align-content:flex-start;
+  flex-wrap: wrap;
+  padding-top: 0px;
+  padding-left: 10px;
+  width: 200px;
+  height: 160px;
+  text-align: left;
+}
+.bikescore_desc {
+  padding-top: 0px;
+  width: 400px;
+  height: 30px;
+}
+.bikescore_desc_sec {
+  padding-left: 5px;
+  padding-top: 0px;
+  width: 400px;
+  height: 40px;
+}
