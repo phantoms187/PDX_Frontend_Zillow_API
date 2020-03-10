@@ -10,10 +10,12 @@ const axios = require('axios');
 const Zillow = require('node-zillow');
 const fetch = require('node-fetch');
 
+
 dotenv.config();
 const port = process.env.PORT || 4000;
 const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349"; //For weather info
-var zillowAPI = new Zillow(process.env.zillowAPI);
+var zillowID = process.env.zillowAPI || "X1-ZWz1hn7j7dra4r_6h6e1";
+var zillowAPI = new Zillow(zillowID);
 const walkScoreAPI = process.env.walkScoreAPI;
 
 var NodeGeocoder = require('node-geocoder');
@@ -40,13 +42,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './client/build/')));
 
-app.post('/weather', (req, res) => {
 
+app.post('/weather', (req, res) => {
+  
     let lat = '';
     let long = '';
     let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
-    let time = "," + moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
-
+    let time = moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
+    
+   
+    
     (async () => {
       const geoCoordinates = await getCoordinates(place);
         lat = geoCoordinates[0].latitude;
@@ -58,7 +63,7 @@ app.post('/weather', (req, res) => {
         lat = '';
         long = '';
     })();
-
+    
 });
 
 
