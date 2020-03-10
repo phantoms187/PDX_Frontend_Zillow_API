@@ -1,11 +1,14 @@
 .my-nav {
-  background-color: #8bc4ef;
   font-weight: bold;
+  background: #1C6EA4;
+background: -moz-linear-gradient(left, #1C6EA4 0%, #2388CB 50%, #000000 100%);
+background: -webkit-linear-gradient(left, #1C6EA4 0%, #2388CB 50%, #000000 100%);
+background: linear-gradient(to right, #1C6EA4 0%, #2388CB 50%, #000000 100%);
 }
 
 .my-nav-link {
-  color: #707070 !important;
-  border-bottom: 2px solid #8bc4ef;
+  color: #B2FF9F !important;
+  border-bottom: 2px solid transparent;
   font-size: 18px;
   margin: 5px 20px 10px 20px;
 }

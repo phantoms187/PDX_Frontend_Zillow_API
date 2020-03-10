@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
 import Search from "../routes/Search";
 
 
@@ -22,11 +19,26 @@ class Navigation extends Component {
       search: !this.state.search
     })
   }
+  
+   giveLocationData = (locationData) => {
+    if(locationData){
+      let locData = {
+        street: locationData.street,
+        city: locationData.city,
+        state: locationData.state,
+        zip: locationData.zip,
+        weather: locationData.weather,
+        icon: locationData.icon
+      };
+    this.props.giveLocationData(locData);
+    }
+  }
+
 
   render() {
     return (
 
-      <div >
+      <div className="my-nav">
 
         <nav className="navbar navbar-expand-md my-nav">
             <ul className="navbar-nav mr-auto">
@@ -45,13 +57,13 @@ class Navigation extends Component {
             </ul>
         </nav>
         { this.state.search ? (
-                                  <div className="row justify-content-start">
-                                    <div className="col-5 mb-2">
-                                      <Search giveLocationData={this.getLocation}/>
+                                  <div className="row justify-content-start my-nav-link">
+                                    <div className="col-sm-12 col-md-8 col-lg-6 mb-2">
+                                      <Search toggleSearch={this.toggleSearch} giveLocationData={this.giveLocationData}/>
                                     </div>
                                   </div>
                                 ) :
-                                (<div><br/><br/></div>)}
+                                (<div></div>)}
 
       </div>
 

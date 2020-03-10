@@ -10,8 +10,8 @@ const isEmpty = require("is-empty");
 
 
 class Search extends Component {
-  constructor() {
-      super();
+  constructor(props) {
+      super(props);
 
       //Set current state to empty
       this.state = {
@@ -23,7 +23,7 @@ class Search extends Component {
       };
   }
 
-  giveLocationData = () => {
+  giveLocationDataFromSearch = () => {
     const locationData = {
       street: this.state.locationStreet,
       city: this.state.locationCity,
@@ -35,8 +35,6 @@ class Search extends Component {
     this.props.giveLocationData(locationData);
   }
 
-
-
   //When input for each is changed, set new state of variable
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
@@ -45,7 +43,7 @@ class Search extends Component {
   //When the form is submitted, set object to post with axios
   onSubmit = e => {
     e.preventDefault();
-
+    
     const place = {
       street: !isEmpty(this.state.locationStreet) ? this.state.locationStreet : "",
       city: this.state.locationCity,
@@ -53,18 +51,17 @@ class Search extends Component {
       zip: !isEmpty(this.state.locationZip) ? this.state.locationZip : "",
     };
 
-
     axios.post('/weather', place)
     .then(response => {
-        this.setState({
-              weather: response.data.currently.summary,
-              icon: (response.data.currently.icon).toUpperCase().replace(/-/g,'_'),
-          });
-
+      this.setState({
+          weather: response.data.currently.summary,
+          icon: (response.data.currently.icon).toUpperCase().replace(/-/g,'_'),
+      });
     })
     .then( () => {
-      this.giveLocationData();
-      this.props.history.push("/");
+      this.giveLocationDataFromSearch();
+      this.props.toggleSearch();
+     
     })
     .catch((error) => {
         console.log(error);

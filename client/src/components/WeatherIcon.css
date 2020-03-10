@@ -1,29 +1,20 @@
-.my-skycon {
-  height: 20%;
-  width: 20%;
-  text-align: center;
-  background-color: #13ed4d;
-  border-radius: 30%;
-}
-
-
 .my-card {
   background-color: #13ed4d;
-  width: 18rem;
-  border-radius: 30%;
+  width: 12rem;
+  border-radius: 5px;
   text-align: center;
-  padding: 10px;
-  margin: 30px;
-  margin-right: 80px;
-  font-size: 24px;
+  margin: 20px;
+  margin-right: 50px;
+  font-size: 20px;
   font-style: oblique;
   float: right;
-
 }
 
-.blackBackground {
-  background-color: black;
+.card-header { 
+    background: black;
+    color: #13ed4d;
 }
+
 .marginTop10px {
   margin-top: 20px;
 }

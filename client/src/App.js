@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AboutWS from "./routes/AboutWS";
 import AboutBS from "./routes/AboutBS";
 import Home from "./routes/Home";
-import Search from "./routes/Search";
 
 import Navigation from "./components/Navigation";
 
@@ -22,8 +21,8 @@ class App extends Component {
       icon: '',
     };
   }
-
-  getLocation = (locationData) => {
+  
+   getLocation = (locationData) => {
     if(locationData) {
       this.setState({
         street: locationData.street,
@@ -38,11 +37,9 @@ class App extends Component {
 
   render (){
     return (
-
       <HashRouter>
-        <Navigation />
-        <Route path="/" exact={true}> <Home icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
-        <Route path="/search" exact={true}> <Search giveLocationData={this.getLocation}/> </Route>
+        <Navigation  giveLocationData={this.getLocation}/>
+        <Route path="/" exact={true}> <Home street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
         <Route path="/walkscore" exact={true} component={AboutWS} />
         <Route path="/bikescore" exact={true} component={AboutBS} />
       </HashRouter>

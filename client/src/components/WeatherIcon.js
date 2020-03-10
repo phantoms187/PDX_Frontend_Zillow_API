@@ -13,19 +13,20 @@ class WeatherIcon extends Component{
       weatherForecast: this.props.weatherForecast,
     };
   }
-
-
-
-  // <div className = "row my-skycon">
-  //     <h6 className="weather-header">Weather:</h6>
-  // {this.state.weatherIcon}
-  //     <h3>{this.state.weatherForecast}</h3>
-  // </div>
+  
+  componentDidUpdate(prevProps){
+    if(prevProps !== this.props){
+        this.setState({          
+            weatherIcon: this.props.weatherIcon,
+            weatherForecast: this.props.weatherForecast,
+        });
+    }
+}
 
 render() {
   return (
     <Card className="my-card">
-    <Card.Header >Current Weather</Card.Header>
+    <Card.Header className="card-header">Current Weather</Card.Header>
     <Skycons className="marginTop10px" color='black' icon= {this.state.weatherIcon} autoplay={true}/>
       <Card.Body>
         <Card.Text>
