@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Walkscore from '../components/Walkscore';
-// import Walkscore from '../components/Walkscore';
 
 class AboutWS extends Component {
   constructor(props){
@@ -11,11 +10,17 @@ class AboutWS extends Component {
     }
   }
   componentDidMount(){
-    fetch('/walkscore')
-      .then(res => res.json())
-      .then(walkscoreObj => this.setState({walkscoreObj}, () => console.log('Walksocre fetched..',
-      walkscoreObj)));
+    this.callApi()
+      .then(res => this.setState({walkscoreObj: res}))
+      .catch(err => console.log(err));
   }
+
+  callApi = async () =>{
+    const response = await fetch('/walkscore');
+    const body = await response.json();
+    return body;
+  }
+
   render(){
 
     return (

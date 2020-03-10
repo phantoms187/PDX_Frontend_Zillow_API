@@ -18,10 +18,7 @@ h5 {
   width: 80px;
   height: 80px;
   border-radius: 20%;
-  border: 2px solid #184981;
-  background-color: #1E61AD;
-  color: white;
-  
+  border: 2px solid #FCF36F;
 }
 .bikescore_desc_all {
   display: flex;
@@ -45,3 +42,14 @@ h5 {
   width: 400px;
   height: 40px;
 }
+
+
+.Collapsible {
+  margin: 10px;
+  width: 350px;
+  height: 25px;
+  border-radius: 7%;
+  background-color: #FCF36F;
+  text-align: center;
+}
+

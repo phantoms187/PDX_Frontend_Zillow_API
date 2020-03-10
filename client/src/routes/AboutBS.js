@@ -10,10 +10,16 @@ class AboutBS extends Component {
     }
   }
   componentDidMount(){
-    fetch('/bikescore')
-      .then(res => res.json())
-      .then(bikescoreObj => this.setState({bikescoreObj}, () => console.log('Bikescore fetched..',
-      bikescoreObj)));
+    this.callApi()
+      .then(res => this.setState({bikescoreObj: res}))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () =>{
+    const response = await fetch('/bikescore');
+    const body = await response.json();
+    console.log(body);
+    return body;
   }
   render(){
 

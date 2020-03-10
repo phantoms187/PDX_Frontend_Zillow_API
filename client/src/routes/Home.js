@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import { Link } from  "react-router-dom";
 import WeatherIcon from '../components/WeatherIcon';
@@ -15,7 +16,8 @@ class Home extends Component {
       state: this.props.state ? this.props.state : "",
       zip: this.props.zip,
       weather: this.props.weather ? this.props.weather : "",
-      icon: this.props.icon ? this.props.icon : ""
+      icon: this.props.icon ? this.props.icon : "",
+      realestateObj:''
     };
   }
   
@@ -31,6 +33,20 @@ class Home extends Component {
         });
     }
   }
+  
+   componentDidMount(){
+    this.callApi()
+      .then(res => this.setState({realestateObj: res}))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () =>{
+    const response = await fetch('/zillow');
+    const body = await response.json();
+    console.log(body);
+    return body;
+  }
+  
 
   render (){
     return (
@@ -42,7 +58,7 @@ class Home extends Component {
         ) :
            (<div></div>)
       }
-      
+
       <div>
         <Link to="/walkscore">Walk Score</Link>
       </div>
