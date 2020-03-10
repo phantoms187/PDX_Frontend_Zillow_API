@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "repository": {
     "type": "git",
@@ -25,8 +28,10 @@
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "mongoose": "^5.9.2",
+    "mysql": "^2.18.1",
     "node-geocoder": "^3.25.0",
     "node-zillow": "^2.0.0",
-    "react-collapsible": "^2.7.0"
+    "react-collapsible": "^2.7.0",
+    "yarn": "^1.22.4"
   }
 }

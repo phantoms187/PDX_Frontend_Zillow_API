@@ -8,12 +8,25 @@ var moment = require('moment');
 const dotenv = require('dotenv');
 const axios = require('axios');
 const Zillow = require('node-zillow');
+const fs = require('fs');
+const mysql = require('mysql');
 
 dotenv.config();
 const port = process.env.PORT || 4000;
 const darkSkyAPI = process.env.darkSkyAPI; //For weather info
 var zillowAPI = new Zillow(process.env.zillowAPI);
 const walkScoreAPI = process.env.walkScoreAPI; 
+const data = fs.readFileSync('./database.json');
+const conf = JSON.parse(data);
+
+const connection = mysql.createConnection({
+  host: conf.host,
+  user: conf.user,
+  password: conf.password,
+  port: conf.port,
+  database: conf.database
+});
+connection.connect();
 
 var NodeGeocoder = require('node-geocoder');
 var options = {
@@ -60,7 +73,7 @@ app.post('/weather', (req, res) => {
 app.get('/walkscore', (req, res) => {
   let lat = undefined;
   let lon = undefined;
-  let place = '521 SW 200th Ave';
+  let place = '232 SW 200th Ave Beaverton OR 97006';
 
   
   geocoder.geocode(place)
@@ -85,7 +98,7 @@ app.get('/walkscore', (req, res) => {
 app.get('/bikescore', (req, res) => {
   let lat = undefined;
   let lon = undefined;
-  let place = '521 SW 200th Ave';
+  let place = '232 SW 200th Ave Beaverton OR 97006';
 
   
   geocoder.geocode(place)
@@ -109,18 +122,17 @@ app.get('/bikescore', (req, res) => {
 });
 
 app.get('/zillow', (req, res) => {
-  var parameters = {
-    zpid: 48690106
-  };
-   
-  zillowAPI.get('GetZestimate', parameters)
-    .then(function(results) {
-      console.log(results);
-      // results here is an object { message: {}, request: {}, response: {}} 
-    })
+  let street = '232 SW 200th Ave';
+  let city = 'Beaverton';
+  let state = 'OR';
+  let zip = '97006';
 
-    
-      
+  connection.query(
+    `SELECT * FROM REALESTATE WHERE street = ${street} AND city=${city} AND state=${state} AND zip=${zip}`,
+    (err,rows,fields) => {
+      res.send(rows);
+    }
+  );      
 });
 
 
