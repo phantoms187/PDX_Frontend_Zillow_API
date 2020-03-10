@@ -5,12 +5,28 @@ const cors = require('cors');
 const path = require("path");
 const request = require('request');
 var moment = require('moment');
-var Zillow = require('node-zillow');
+const dotenv = require('dotenv');
+const axios = require('axios');
+const Zillow = require('node-zillow');
+const fs = require('fs');
+const mysql = require('mysql');
 
-
+dotenv.config();
 const port = process.env.PORT || 4000;
 const darkSkyAPI = process.env.darkSkyAPI; //For weather info
 var zillowAPI = new Zillow(process.env.zillowAPI);
+const walkScoreAPI = process.env.walkScoreAPI; 
+const data = fs.readFileSync('./database.json');
+const conf = JSON.parse(data);
+
+const connection = mysql.createConnection({
+  host: conf.host,
+  user: conf.user,
+  password: conf.password,
+  port: conf.port,
+  database: conf.database
+});
+connection.connect();
 
 var NodeGeocoder = require('node-geocoder');
 var options = {
@@ -54,9 +70,77 @@ app.post('/weather', (req, res) => {
     };
 });
 
-app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'));
+app.get('/walkscore', (req, res) => {
+  let lat = undefined;
+  let lon = undefined;
+  let place = '232 SW 200th Ave Beaverton OR 97006';
+
+  
+  geocoder.geocode(place)
+    .then(function(geores) {
+      lat = geores[0].latitude;
+      lon = geores[0].longitude;
+      let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&wsapikey=${walkScoreAPI}`;
+      axios.get(url)
+        .then( (response) => {
+          res.send(response.data);  
+        })
+        .catch((err)=>{
+          console.log(err);
+        });
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+    
+  });
+
+app.get('/bikescore', (req, res) => {
+  let lat = undefined;
+  let lon = undefined;
+  let place = '232 SW 200th Ave Beaverton OR 97006';
+
+  
+  geocoder.geocode(place)
+    .then(function(geores) {
+      lat = geores[0].latitude;
+      lon = geores[0].longitude;
+      let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&transit=1&bike=1&wsapikey=${walkScoreAPI}`;
+      axios.get(url)
+        .then( (response) => {
+          console.log(response.data.bike);
+          res.send(response.data.bike);  
+        })
+        .catch((err)=>{
+          console.log(err);
+        });
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+      
 });
+
+app.get('/zillow', (req, res) => {
+  let street = '232 SW 200th Ave';
+  let city = 'Beaverton';
+  let state = 'OR';
+  let zip = '97006';
+  console.log("hey");
+  connection.query(
+    "SELECT * FROM REALESTATE WHERE street = '232 SW 200th Ave' AND city='Beaverton' AND state='OR' AND zip='97006'",
+    (err,rows,fields) => {
+      console.log(rows);
+      res.send(rows);
+    }
+  );      
+});
+
+
+
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, 'client/build/index.html'));
+// });
 
 app.listen(port, () =>{
   console.log('Server is running on Port:', port);

@@ -1,0 +1,54 @@
+h1, h3, h4 {
+  margin:3px;
+}
+h5 {
+  margin:10px;
+}
+.walkscore_data {
+  display: flex;
+  flex-direction: row;
+  align-content:flex-start;
+  flex-wrap: wrap;
+  width: 500px;
+  height: 80px;
+  margin: 10px;
+  text-align: center;
+}
+.walkscore_score {
+  width: 80px;
+  height: 80px;
+  border-radius: 20%;
+  border: 2px solid #FCF36F;
+}
+.walkscore_desc_all {
+  display: flex;
+  flex-direction: column;
+  align-content:flex-start;
+  flex-wrap: wrap;
+  padding-top: 0px;
+  padding-left: 10px;
+  width: 200px;
+  height: 160px;
+  text-align: left;
+}
+.walkscore_desc {
+  padding-top: 0px;
+  width: 400px;
+  height: 30px;
+}
+.walkscore_desc_sec {
+  padding-left: 5px;
+  padding-top: 0px;
+  width: 400px;
+  height: 40px;
+}
+
+.Collapsible {
+  margin: 10px;
+  width: 350px;
+  height: 25px;
+  border-radius: 7%;
+  background-color: #BDFF75;
+  text-align: center;
+}
+
