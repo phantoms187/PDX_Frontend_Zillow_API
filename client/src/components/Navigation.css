@@ -1,18 +1,11 @@
 .my-nav {
   background-color: #8bc4ef;
   font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
 }
 
 .my-nav-link {
-  display: inline-block;
   color: #707070 !important;
   border-bottom: 2px solid #8bc4ef;
-
   font-size: 18px;
   margin: 5px 20px 10px 20px;
 }

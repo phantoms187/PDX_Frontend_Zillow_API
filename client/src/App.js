@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter, Route} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import AboutWS from "./routes/AboutWS";
@@ -33,7 +34,6 @@ class App extends Component {
         icon: locationData.icon
       });
     }
-    console.log("Well?");
   }
 
   render (){

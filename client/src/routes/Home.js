@@ -8,6 +8,10 @@ class Home extends Component {
   // constructor() {
   //   super();
   // }
+  // { this.props.icon ?
+  //   (<WeatherIcon weatherIcon={this.props.icon} weatherForecast={this.props.weather} /> ) :
+  //   (<div></div>)
+  // }
 
 
 
@@ -16,6 +20,7 @@ class Home extends Component {
     <div>
       <h1>{this.props.city}</h1>
       <h1>{this.props.state}</h1>
+
       <WeatherIcon weatherIcon={this.props.icon} weatherForecast={this.props.weather} />
       <div>
         <Link to="/walkscore">Walk Score</Link>
