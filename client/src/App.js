@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-import React from 'react';
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-=======
 import React, { Component } from 'react';
 import { HashRouter, Route} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
->>>>>>> add-nav
+import './App.css';
+
 
 
 import AboutWS from "./routes/AboutWS";
