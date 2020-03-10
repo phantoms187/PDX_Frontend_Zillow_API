@@ -126,10 +126,11 @@ app.get('/zillow', (req, res) => {
   let city = 'Beaverton';
   let state = 'OR';
   let zip = '97006';
-
+  console.log("hey");
   connection.query(
-    `SELECT * FROM REALESTATE WHERE street = ${street} AND city=${city} AND state=${state} AND zip=${zip}`,
+    "SELECT * FROM REALESTATE WHERE street = '232 SW 200th Ave' AND city='Beaverton' AND state='OR' AND zip='97006'",
     (err,rows,fields) => {
+      console.log(rows);
       res.send(rows);
     }
   );      
@@ -137,9 +138,9 @@ app.get('/zillow', (req, res) => {
 
 
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, 'client/build/index.html'));
+// });
 
 app.listen(port, () =>{
   console.log('Server is running on Port:', port);
