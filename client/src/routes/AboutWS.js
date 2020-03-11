@@ -49,7 +49,6 @@ class AboutWS extends Component {
           (
             <div>
             <Walkscore score={this.state.walkscoreObj.walkscore} description={this.state.walkscoreObj.description} />
-            <p>{this.state.street}</p>
             </div>
           ) : (
             <div className="loader">

@@ -13,7 +13,6 @@ class AboutBS extends Component {
       icon: this.props.icon ? this.props.icon : "",
       bikescoreObj:''
     };
-    console.log("AboutBS:" + this.state.street);
   }
 
   componentDidUpdate(prevProps){
@@ -27,21 +26,17 @@ class AboutBS extends Component {
             icon: this.props.icon
         });
     }
-    console.log("AboutBS componentDidUpdate:" + this.state.street);
   }
 
   componentDidMount(){
-    console.log("componentDidMount:" + this.state.street);
     this.callApi()
       .then(res => this.setState({bikescoreObj: res}))
       .catch(err => console.log(err));
   }
 
   callApi = async () =>{
-    console.log("callAPI:" + this.state.street);
     const response = await fetch('/bikescore');
     const body = await response.json();
-    console.log(body);
     return body;
   }
   render(){
