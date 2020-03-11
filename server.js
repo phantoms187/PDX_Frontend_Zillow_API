@@ -14,8 +14,8 @@ const fetch = require('node-fetch');
 
 dotenv.config();
 const port = process.env.PORT || 4000;
-const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349"; //For weather info
-var zillowID = process.env.zillowAPI || "X1-ZWz1hn7j7dra4r_6h6e1";
+const darkSkyAPI = process.env.darkSkyAPI; //For weather info
+var zillowID = process.env.zillowAPI;
 var zillowAPI = new Zillow(zillowID);
 const walkScoreAPI = process.env.walkScoreAPI;
 
@@ -24,7 +24,7 @@ const mysql = require('mysql');
 
 dotenv.config();
 
-const data = fs.readFileSync('./databaseHeroku.json');
+const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 const connection = mysql.createConnection({
   host: process.env.HOST || conf.host,
@@ -38,7 +38,7 @@ connection.connect();
 var NodeGeocoder = require('node-geocoder');
 var options = {
   provider: 'opencage',
-  apiKey: process.env.openCageAPI || "464ba334d812473fa18bc2b34e8ad854"
+  apiKey: process.env.openCageAPI 
 };
 
 var geocoder = NodeGeocoder(options);
@@ -65,10 +65,7 @@ app.post('/weather', (req, res) => {
     let lat = '';
     let long = '';
     let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
-    let time = moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
-    
-   
-    
+
     (async () => {
       const geoCoordinates = await getCoordinates(place);
         lat = geoCoordinates[0].latitude;
