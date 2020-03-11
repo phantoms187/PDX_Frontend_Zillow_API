@@ -146,8 +146,6 @@ app.get('/zillow', (req, res) => {
       // results here is an object { message: {}, request: {}, response: {}}
     });
 
-
-
 });
 
 app.get('/zillow', (req, res) => {
@@ -155,7 +153,6 @@ app.get('/zillow', (req, res) => {
   let city = 'Beaverton';
   let state = 'OR';
   let zip = '97006';
-  console.log("hey");
   connection.query(
     "SELECT * FROM REALESTATE WHERE street = '232 SW 200th Ave' AND city='Beaverton' AND state='OR' AND zip='97006'",
     (err,rows,fields) => {
