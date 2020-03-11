@@ -1,0 +1,8 @@
+
+{
+  "host": process.env.HOST,
+  "user": process.env.USER,
+  "password": process.env.PASSWORDDB,
+  "port": process.env.PORTDB,
+  "database": process.env.DB
+}

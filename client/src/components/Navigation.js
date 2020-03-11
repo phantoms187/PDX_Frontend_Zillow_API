@@ -17,7 +17,7 @@ class Navigation extends Component {
   toggleSearch = e => {
     this.setState({
       search: !this.state.search
-    })
+    });
   }
   
    giveLocationData = (locationData) => {
