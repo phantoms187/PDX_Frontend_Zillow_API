@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Bikescore from '../components/Bikescore';
 
 class AboutBS extends Component {
   constructor(props){
     super(props);
     this.state = {
-      street: this.props.street,
+      street: this.props.street ? this.props.street: "",
       city: this.props.city ? this.props.city : "",
       state: this.props.state ? this.props.state : "",
       zip: this.props.zip,
@@ -14,7 +15,6 @@ class AboutBS extends Component {
       bikescoreObj:''
     };
   }
-
   componentDidUpdate(prevProps){
     if(prevProps !== this.props){
         this.setState({    
@@ -29,16 +29,24 @@ class AboutBS extends Component {
   }
 
   componentDidMount(){
-    this.callApi()
-      .then(res => this.setState({bikescoreObj: res}))
-      .catch(err => console.log(err));
+    const place = {
+      street: !(this.state.street) ? this.state.street : "",
+      city: this.state.city,
+      state: this.state.state,
+      zip: !(this.state.zip) ? this.state.zip : "",
+    };
+
+    axios.post('/bikescore', place)
+    .then(response => {
+      this.setState({
+        bikescoreObj: response.data
+      });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
   }
 
-  callApi = async () =>{
-    const response = await fetch('/bikescore');
-    const body = await response.json();
-    return body;
-  }
   render(){
 
     return (

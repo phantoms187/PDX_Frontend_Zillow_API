@@ -24,7 +24,7 @@ const mysql = require('mysql');
 
 dotenv.config();
 
-const data = fs.readFileSync('./databaseHeroku.json');
+const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 const connection = mysql.createConnection({
   host: process.env.HOST || conf.host,
@@ -83,13 +83,12 @@ app.post('/weather', (req, res) => {
     
 });
 
-
-app.get('/walkscore', (req, res) => {
-  let lat = undefined;
-  let lon = undefined;
-  let place = '232 SW 200th Ave Beaverton OR 97006';
-
+app.post('/walkscore', (req, res) => {
   
+  let lat = '';
+  let long = '';
+  let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
+ 
   geocoder.geocode(place)
     .then(function(geores) {
       lat = geores[0].latitude;
@@ -106,15 +105,15 @@ app.get('/walkscore', (req, res) => {
     .catch(function(err) {
       console.log(err);
     });
+  
 });
 
-
-app.get('/bikescore', (req, res) => {
-  let lat = undefined;
-  let lon = undefined;
-  let place = '232 SW 200th Ave Beaverton OR 97006';
-
+app.post('/bikescore', (req, res) => {
   
+  let lat = '';
+  let long = '';
+  let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
+
   geocoder.geocode(place)
     .then(function(geores) {
       lat = geores[0].latitude;
@@ -122,7 +121,6 @@ app.get('/bikescore', (req, res) => {
       let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&transit=1&bike=1&wsapikey=${walkScoreAPI}`;
       axios.get(url)
         .then( (response) => {
-          console.log(response.data.bike);
           res.send(response.data.bike);  
         })
         .catch((err)=>{

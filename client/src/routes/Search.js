@@ -43,7 +43,6 @@ class Search extends Component {
   //When the form is submitted, set object to post with axios
   onSubmit = e => {
     e.preventDefault();
-    
     const place = {
       street: !isEmpty(this.state.locationStreet) ? this.state.locationStreet : "",
       city: this.state.locationCity,

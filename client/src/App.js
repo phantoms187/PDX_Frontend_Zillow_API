@@ -43,7 +43,7 @@ class App extends Component {
         <Navigation  giveLocationData={this.getLocation}/>
         <Route path="/" exact={true}> <Home street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
         <Route path="/walkscore" exact={true}> <AboutWS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
-        <Route path="/bikescore" exact={true} component={AboutBS} />
+        <Route path="/bikescore" exact={true}> <AboutBS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
       </HashRouter>
     );
   }
