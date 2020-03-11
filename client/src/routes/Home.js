@@ -18,6 +18,7 @@ class Home extends Component {
       icon: this.props.icon ? this.props.icon : "",
       realestateObj:''
     };
+    console.log("home:" + this.state.street);
   }
   
   componentDidUpdate(prevProps){
