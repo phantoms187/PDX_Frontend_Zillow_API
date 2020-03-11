@@ -51,8 +51,6 @@ class Search extends Component {
       zip: !isEmpty(this.state.locationZip) ? this.state.locationZip : "",
     };
 
-    console.log("place:" + place.street + place.city);
-
     axios.post('/weather', place)
     .then(response => {
       this.setState({

@@ -18,7 +18,6 @@ class Home extends Component {
       icon: this.props.icon ? this.props.icon : "",
       realestateObj:''
     };
-    console.log("home:" + this.state.street);
   }
   
   componentDidUpdate(prevProps){
@@ -43,7 +42,6 @@ class Home extends Component {
   callApi = async () =>{
     const response = await fetch('/zillow');
     const body = await response.json();
-    console.log(body);
     return body;
   }
   
