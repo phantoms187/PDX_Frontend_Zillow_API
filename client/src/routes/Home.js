@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import { Link } from  "react-router-dom";
 import WeatherIcon from '../components/WeatherIcon';
