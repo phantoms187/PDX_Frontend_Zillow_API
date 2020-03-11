@@ -1,9 +1,6 @@
 h1, h3, h4 {
   margin:3px;
 }
-h5 {
-  margin:10px;
-}
 .walkscore_data {
   display: flex;
   flex-direction: row;
@@ -13,6 +10,8 @@ h5 {
   height: 80px;
   margin: 10px;
   text-align: center;
+  size: 5px;
+
 }
 .walkscore_score {
   width: 80px;

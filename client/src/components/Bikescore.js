@@ -24,16 +24,16 @@ class BikeScore extends React.Component {
     return (
     <div>
       <section className="bikescore_data">
-        <div className="bikescore_score box">
-          <h5>bikescore</h5>
-          <h1>{this.props.score}</h1>
+        <div className="bikescore_score">
+          bikescore
+          <h3>{this.props.score}</h3>
         </div>
-        <div className="bikescore_desc_all box">
-          <div className="bikescore_desc box">
+        <div className="bikescore_desc_all">
+          <div className="bikescore_desc">
             <h3>{this.props.description}</h3>
           </div>
-          <div className="bikescore_desc_sec box">
-            {description_sec}
+          <div className="bikescore_desc_sec">
+            <br></br>{description_sec}
           </div>
         </div>
       </section>

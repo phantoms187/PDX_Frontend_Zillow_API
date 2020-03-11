@@ -26,16 +26,16 @@ class Walkscore extends React.Component {
     return (
     <div>
       <section className="walkscore_data">
-        <div className="walkscore_score box">
-          <h5>walkscore</h5>
-          <h1>{this.props.score}</h1>
+        <div className="walkscore_score">
+          walkscore
+          <h3>{this.props.score}</h3>
         </div>
-        <div className="walkscore_desc_all box">
-          <div className="walkscore_desc box">
+        <div className="walkscore_desc_all">
+          <div className="walkscore_desc">
             <h3>{this.props.description}</h3>
           </div>
-          <div className="walkscore_desc_sec box">
-            {description_sec}
+          <div className="walkscore_desc_sec">
+          <br></br>{description_sec}
           </div>
         </div>
       </section>
