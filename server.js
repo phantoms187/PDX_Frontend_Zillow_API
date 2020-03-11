@@ -11,6 +11,7 @@ const Zillow = require('node-zillow');
 const fetch = require('node-fetch');
 
 
+
 dotenv.config();
 const port = process.env.PORT || 4000;
 const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349"; //For weather info
@@ -25,13 +26,12 @@ dotenv.config();
 
 const data = fs.readFileSync('./databaseHeroku.json');
 const conf = JSON.parse(data);
-
 const connection = mysql.createConnection({
-  host: conf.host,
-  user: conf.user,
-  password: conf.password,
-  port: conf.port,
-  database: conf.database
+  host: process.env.HOST || conf.host,
+  user: process.env.USER || conf.user,
+  password: process.env.PASSWORDDB || conf.password,
+  port: process.env.PORTDB || conf.port,
+  database: process.env.DB || conf.database
 });
 connection.connect();
 
