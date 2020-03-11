@@ -23,7 +23,7 @@ const mysql = require('mysql');
 
 dotenv.config();
 
-const data = fs.readFileSync('./database.json');
+const data = fs.readFileSync('./databaseHeroku.json');
 const conf = JSON.parse(data);
 
 const connection = mysql.createConnection({
