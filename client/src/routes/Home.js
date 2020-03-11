@@ -42,7 +42,6 @@ class Home extends Component {
   callApi = async () =>{
     const response = await fetch('/zillow');
     const body = await response.json();
-    console.log(body);
     return body;
   }
   
