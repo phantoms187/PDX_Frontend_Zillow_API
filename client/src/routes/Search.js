@@ -57,9 +57,9 @@ class Search extends Component {
     axios.post('/weather', place)
     .then(response => {
       this.setState({
-          latitude: response.latitude,
-          longitude: response.longitude,
-          timezone:response.timezone,
+          latitude: response.data.latitude,
+          longitude: response.data.longitude,
+          timezone:response.data.timezone,
           temperature: response.data.currently.temperature,
           weather: response.data.currently.summary,
           icon: (response.data.currently.icon).toUpperCase().replace(/-/g,'_'),

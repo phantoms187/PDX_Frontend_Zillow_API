@@ -48,17 +48,23 @@ class Home extends Component {
     <div className="my-app">
       <div className="box">
 
-      { true ?
+      { this.state.icon ?
         (
           <div className="weather">
-          <WeatherIcon temperature="70.11" city="melbourne beach" weatherIcon="SNOW" weatherForecast="Snow" />
+          <WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} />
           </div>
         ) :
-           (<div className="weather"></div>)
+        ( <div className="weather"></div>)
       }
-        <div className="address">
-          <Address timezone="Pacific" longitude="102.01" latitude="41.00" street="211 dogwood ave" city="melbourne beach" state="fl" zip="32951" />
-        </div>
+
+      { this.state.street ?
+        (
+          <div className="address">
+          <Address {...this.state} />
+          </div>
+        ) :
+        ( <div className="address"></div> )
+      }
         <div className="walkscore">
           <Link to="/walkscore">Walk Score</Link>
         </div>

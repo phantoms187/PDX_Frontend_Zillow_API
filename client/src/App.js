@@ -46,9 +46,6 @@ class App extends Component {
     }
   }
 
-  // <Route path="/" exact={true}> <Home temperature={this.state.temperature} street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
-
-
   render (){
     return (
       <HashRouter>

@@ -52,7 +52,7 @@ class Navigation extends Component {
             </ul>
         </nav>
         { this.state.search ? (
-          <div className="row justify-content-start my-search">
+          <div className="row justify-content-start">
             <div className="col-sm-12 col-md-10 col-lg-6 mb-2">
               <Search toggleSearch={this.toggleSearch} giveLocationData={this.giveLocationData}/>
             </div>
