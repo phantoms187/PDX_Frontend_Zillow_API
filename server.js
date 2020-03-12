@@ -22,7 +22,6 @@ const walkScoreAPI = process.env.walkScoreAPI;
 const fs = require('fs');
 //const mysql = require('mysql');
 
-dotenv.config();
 
 // const data = fs.readFileSync('./database.json');
 // const conf = JSON.parse(data);
