@@ -21,10 +21,14 @@ class App extends Component {
       zip: '',
       weather: '',
       icon: '',
-      temperature: ''
+      temperature: '',
+      latitude: '',
+      longitude: '',
+      timezone: ''
+
     };
   }
-  
+
    getLocation = (locationData) => {
     if(locationData) {
       this.setState({
@@ -34,16 +38,22 @@ class App extends Component {
         zip: locationData.zip,
         weather: locationData.weather,
         icon: locationData.icon,
-        temperature: locationData.temperature
+        temperature: locationData.temperature,
+        latitude: locationData.latitude,
+        longitude: locationData.longitude,
+        timezone:locationData.timezone
       });
     }
   }
+
+  // <Route path="/" exact={true}> <Home temperature={this.state.temperature} street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
+
 
   render (){
     return (
       <HashRouter>
         <Navigation  giveLocationData={this.getLocation}/>
-        <Route path="/" exact={true}> <Home temperature={this.state.temperature} street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
+        <Route path="/" exact={true}> <Home className="container home" {...this.state}/></Route>
 
         <Route path="/walkscore" exact={true}> <AboutWS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
         <Route path="/bikescore" exact={true}> <AboutBS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>

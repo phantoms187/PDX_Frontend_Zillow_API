@@ -1,0 +1,27 @@
+.my-address {
+  background-color: #1C6EA4;
+  color: #B2FF9F;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 32px;
+  font-style: oblique;
+}
+
+.address-header {
+  color: #B2FF9F;
+  font-size: 26px;
+  background: black;
+  text-transform: capitalize;
+}
+
+.marginTop10px {
+  margin-top: 20px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

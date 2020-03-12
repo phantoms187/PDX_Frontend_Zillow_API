@@ -19,7 +19,7 @@ class Navigation extends Component {
       search: !this.state.search
     });
   }
-  
+
    giveLocationData = (locationData) => {
     if(locationData){
       let locData = {
@@ -30,18 +30,17 @@ class Navigation extends Component {
         weather: locationData.weather,
         icon: locationData.icon,
         temperature: locationData.temperature,
-
+        latitude: locationData.latitude,
+        longitude: locationData.longitude,
+        timezone:locationData.timezone
       };
     this.props.giveLocationData(locData);
     }
   }
 
-
   render() {
     return (
-
       <div className="my-nav">
-
         <nav className="navbar navbar-expand-md my-nav">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
@@ -50,28 +49,18 @@ class Navigation extends Component {
               <li>
                   <div onClick={this.toggleSearch} className="nav-link my-nav-link">Search</div>
               </li>
-              </ul>
-
-              <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                 <Link to={'/options'} className="nav-link my-nav-link">Options</Link>
-              </li>
             </ul>
         </nav>
         { this.state.search ? (
-                                  <div className="row justify-content-start my-nav-link">
-                                    <div className="col-sm-12 col-md-8 col-lg-6 mb-2">
-                                      <Search toggleSearch={this.toggleSearch} giveLocationData={this.giveLocationData}/>
-                                    </div>
-                                  </div>
-                                ) :
-                                (<div></div>)}
-
+          <div className="row justify-content-start my-search">
+            <div className="col-sm-12 col-md-10 col-lg-6 mb-2">
+              <Search toggleSearch={this.toggleSearch} giveLocationData={this.giveLocationData}/>
+            </div>
+          </div>
+        ) :
+        (<div></div>)}
       </div>
-
-
-
     )}
-  }
+}
 
 export default Navigation;

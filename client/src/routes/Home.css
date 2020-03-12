@@ -1,6 +1,35 @@
-/*.my-app {*/
-/*background: #FFF788;*/
-/*background: -moz-linear-gradient(left, #FFF788 0%, #ABEA73 86%, #000000 100%);*/
-/*background: -webkit-linear-gradient(left, #FFF788 0%, #ABEA73 86%, #000000 100%);*/
-/*background: linear-gradient(to right, #FFF788 0%, #ABEA73 86%, #000000 100%);*/
-/*}*/
+.my-app {
+
+}
+
+.box {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  align-content: space-between;
+  background-color: #CCC;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.weather {
+    align-self: center;
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.address {
+    grid-column: 2/5;
+    grid-row: 2;
+}
+
+.walkscore {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.bikescore {
+  grid-column: 4;
+  grid-row: 1;
+}

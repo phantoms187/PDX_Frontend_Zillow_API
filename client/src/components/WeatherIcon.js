@@ -15,10 +15,11 @@ class WeatherIcon extends Component{
       temperature: this.props.temperature
     };
   }
-  
+
   componentDidUpdate(prevProps){
     if(prevProps !== this.props){
-        this.setState({          
+
+        this.setState({
             weatherIcon: this.props.weatherIcon,
             weatherForecast: this.props.weatherForecast,
             city: this.props.city,
@@ -30,12 +31,12 @@ class WeatherIcon extends Component{
 render() {
   return (
     <Card className="my-card">
-    <Card.Header className="card-header">Current Weather for {this.state.city} </Card.Header>
+    <Card.Header className="card-header"><div>Current Weather:</div> {this.state.city} </Card.Header>
     <Skycons className="marginTop10px" color='black' icon= {this.state.weatherIcon} autoplay={true}/>
       <Card.Body>
         <Card.Text>
-          <div>{this.state.weatherForecast}</div>
-          <div>{this.state.temperature / 1}</div>
+          <div>{(this.state.weatherForecast)}</div>
+          <div>{Math.trunc(this.state.temperature)}&#8457;</div>
         </Card.Text>
       </Card.Body>
     </Card>

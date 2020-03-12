@@ -32,7 +32,9 @@ class Search extends Component {
       weather: this.state.weather,
       icon: this.state.icon,
       temperature: this.state.temperature,
-
+      latitude: this.state.latitude,
+      longitude: this.state.longitude,
+      timezone:this.state.timezone,
     };
     this.props.giveLocationData(locationData);
   }
@@ -55,6 +57,9 @@ class Search extends Component {
     axios.post('/weather', place)
     .then(response => {
       this.setState({
+          latitude: response.latitude,
+          longitude: response.longitude,
+          timezone:response.timezone,
           temperature: response.data.currently.temperature,
           weather: response.data.currently.summary,
           icon: (response.data.currently.icon).toUpperCase().replace(/-/g,'_'),
@@ -63,7 +68,7 @@ class Search extends Component {
     .then( () => {
       this.giveLocationDataFromSearch();
       this.props.toggleSearch();
-     
+
     })
     .catch((error) => {
         console.log(error);
