@@ -46,6 +46,7 @@ class Home extends Component {
   }
 
   render (){
+    setTimeout(function(){}, 500);
     return (
     <div className="my-app">
       { this.state.walkscoreObj ?
