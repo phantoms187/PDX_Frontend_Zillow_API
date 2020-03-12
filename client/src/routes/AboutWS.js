@@ -30,10 +30,10 @@ class AboutWS extends Component {
 
   componentDidMount(){
     const place = {
-      street: !(this.state.street) ? this.state.street : "",
+      street: this.state.street,
       city: this.state.city,
       state: this.state.state,
-      zip: !(this.state.zip) ? this.state.zip : "",
+      zip: this.state.zip
     };
 
     axios.post('/walkscore', place)
