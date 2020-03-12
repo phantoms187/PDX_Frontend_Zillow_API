@@ -3,6 +3,8 @@
   border-radius: 5px;
   text-align: center;
   font-size: 20px;
+  -webkit-box-shadow: 5px 2px 15px 5px rgba(0,0,0,0.31);
+box-shadow: 5px 2px 15px 5px rgba(0,0,0,0.31);
 }
 
 .card-header {
