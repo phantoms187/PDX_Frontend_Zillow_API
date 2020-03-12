@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-
 const isEmpty = require("is-empty");
 
 
@@ -87,7 +86,6 @@ class Search extends Component {
   }
 
   render(){
-
     return (
       <Form onSubmit={this.onSubmit}>
         <Form.Row>
@@ -160,13 +158,8 @@ class Search extends Component {
           </Button>
         </Form.Row>
       </Form>
-
-
-
     );
-
   }
-
 }
 
 export default withRouter(Search);

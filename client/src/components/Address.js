@@ -64,8 +64,9 @@ render() {
           {Math.abs((this.state.longitude).toFixed(3))}&#176;
           { (this.state.longitude) >=0 ? "E" : "W" }
           </div>
-          <div><span className="capitalize">Timezone: {(this.state.timezone)}</span></div>
-
+          <div>
+            <span className="capitalize">Timezone: {(this.state.timezone)}</span>
+          </div>
         </Card.Text>
       </Card.Body>
     </Card>

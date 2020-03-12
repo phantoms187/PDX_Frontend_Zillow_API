@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import { Link } from  "react-router-dom";
 
 import WeatherIcon from '../components/WeatherIcon';
 import Address from '../components/Address';
@@ -91,41 +90,5 @@ class Home extends Component {
   );
  }
 }
-
-// { this.state.icon ?
-//   (
-//     <div className="weather">
-//     <WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} />
-//     </div>
-//   ) :
-//   ( <div className="weather"></div>)
-// }
-//
-// { this.state.street ?
-//   (
-//     <div className="address">
-//     <Address {...this.state} />
-//     </div>
-//   ) :
-//   ( <div className="address"></div> )
-// }
-//
-// { this.state.walkscoreObj ?
-//   (
-//     <div className="walkscore">
-//       <AboutWS walkscoreObj={this.state.walkscoreObj}/>
-//     </div>
-//   ) :
-//   ( <div className="walkscore"></div> )
-// }
-//
-// { this.state.walkscoreObj ?
-//   (
-//     <div className="bikescore">
-//       <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
-//     </div>
-//   ) :
-//   ( <div className="bikescore"></div> )
-// }
 
 export default Home;

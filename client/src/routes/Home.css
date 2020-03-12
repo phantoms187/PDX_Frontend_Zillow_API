@@ -25,15 +25,15 @@
 }
 
 @keyframes bounce {
-  from { transform: translate3d(30px, 0, 0);}
-  to   { transform: translate3d(300px, 0, 0); }
+  from { transform: translate3d(10px, 0, 0);}
+  to   { transform: translate3d(340px, 0, 0); }
 }
 
 @keyframes color-change {
-  0%   {background-color: red;}
-  25%  {background-color: yellow;}
-  50%  {background-color: blue;}
-  100% {background-color: green;}
+  0%   {background-color: #CCC;}
+  25%  {background-color: #1C6EA4;}
+  50%  {background-color: #B2FF9F;}
+  100% {background-color: #eda539;}
 }
 
 .ball-container {
@@ -48,8 +48,6 @@
   border-radius: 30%;
   animation: color-change 3.5s;
   animation-iteration-count: infinite;
-
-
 }
 
 .uparrow {
