@@ -5,8 +5,8 @@ import './App.css';
 
 
 
-import AboutWS from "./routes/AboutWS";
-import AboutBS from "./routes/AboutBS";
+// import AboutWS from "./routes/AboutWS";
+// import AboutBS from "./routes/AboutBS";
 import Home from "./routes/Home";
 
 import Navigation from "./components/Navigation";

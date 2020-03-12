@@ -3,9 +3,7 @@ import './Bikescore.css';
 import Collapsible from 'react-collapsible';
 
 class BikeScore extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   addDescription(score) {
     if ( Number(score) <= 49)
@@ -54,6 +52,3 @@ class BikeScore extends React.Component {
 };
 
 export default BikeScore;
-
-
-

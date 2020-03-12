@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { Link } from  "react-router-dom";
+//import { Link } from  "react-router-dom";
 
 import WeatherIcon from '../components/WeatherIcon';
 import Address from '../components/Address';
 import AboutWS from "./AboutWS";
 import AboutBS from "./AboutBS";
+import Card from 'react-bootstrap/Card'
+
 
 
 import './Home.css';
@@ -26,8 +28,6 @@ class Home extends Component {
       longitude: this.props.longitude ? this.props.longitude : "",
       timezone:this.props.timezone ? this.props.timezone : "",
       walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
-
-
     };
   }
 
@@ -52,35 +52,75 @@ class Home extends Component {
   render (){
     return (
     <div className="my-app">
-      <div className="box">
-
       { this.state.icon ?
         (
-          <div className="weather">
-          <WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} />
+          <div className="box">
+            <div className="weather">
+            <span><WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} /></span>
+            </div>
+            <div className="address">
+            <span><Address {...this.state} /></span>
+            </div>
+            <div className="walkscore">
+            <AboutWS walkscoreObj={this.state.walkscoreObj}/>
+            </div>
+            <div className="bikescore">
+              <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
+            </div>
           </div>
         ) :
-        ( <div className="weather"></div>)
-      }
-
-      { this.state.street ?
         (
-          <div className="address">
-          <Address {...this.state} />
+          <div className="waiting">
+            <Card>
+            <Card.Header>Welcome!</Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  <p>Enter an address using the Search Option above <span className="uparrow">&#8679;</span></p>
+                </Card.Text>
+              </Card.Body>
+            </Card>
           </div>
-        ) :
-        ( <div className="address"></div> )
+        )
       }
-        <div className="walkscore">
-          <AboutWS walkscoreObj={this.state.walkscoreObj}/>
-        </div>
-        <div className="bikescore">
-          <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
-        </div>
-      </div>
     </div>
   );
  }
 }
+
+// { this.state.icon ?
+//   (
+//     <div className="weather">
+//     <WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} />
+//     </div>
+//   ) :
+//   ( <div className="weather"></div>)
+// }
+//
+// { this.state.street ?
+//   (
+//     <div className="address">
+//     <Address {...this.state} />
+//     </div>
+//   ) :
+//   ( <div className="address"></div> )
+// }
+//
+// { this.state.walkscoreObj ?
+//   (
+//     <div className="walkscore">
+//       <AboutWS walkscoreObj={this.state.walkscoreObj}/>
+//     </div>
+//   ) :
+//   ( <div className="walkscore"></div> )
+// }
+//
+// { this.state.walkscoreObj ?
+//   (
+//     <div className="bikescore">
+//       <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
+//     </div>
+//   ) :
+//   ( <div className="bikescore"></div> )
+// }
 
 export default Home;

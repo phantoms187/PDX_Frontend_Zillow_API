@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import Walkscore from '../components/Walkscore';
 
 class AboutWS extends Component {
@@ -9,7 +9,7 @@ class AboutWS extends Component {
       walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
     };
   }
-  
+
   componentDidUpdate(prevProps){
     if(prevProps !== this.props){
         this.setState({
@@ -42,17 +42,9 @@ class AboutWS extends Component {
 
     return (
       <section className="container">
-
-        {this.state.walkscoreObj ?
-          (
-            <div>
-            <Walkscore score={this.state.walkscoreObj.walkscore} description={this.state.walkscoreObj.description} />
-            </div>
-          ) : (
-            <div className="loader">
-              <span className="loader_text"> Loading...</span>
-            </div>
-          )}
+        <div>
+          <Walkscore score={this.state.walkscoreObj.walkscore} description={this.state.walkscoreObj.description} />
+        </div>
       </section>
     );
 

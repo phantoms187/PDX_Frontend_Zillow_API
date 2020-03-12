@@ -3,9 +3,9 @@ import './Walkscore.css';
 import Collapsible from 'react-collapsible';
 
 class Walkscore extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   addDescription(score) {
     if (Number(score) <= 24)
@@ -58,4 +58,3 @@ class Walkscore extends React.Component {
 };
 
 export default Walkscore;
-

@@ -10,7 +10,11 @@ class Navigation extends Component {
   constructor(props){
     super(props);
     this.state = {
-      search: false
+      search: false,
+      street: "",
+      city: "",
+      state: "",
+      zip: ""
     };
   }
 
@@ -22,6 +26,13 @@ class Navigation extends Component {
 
    giveLocationData = (locationData) => {
     if(locationData){
+      this.setState({
+        street: locationData.street,
+        city: locationData.city,
+        state: locationData.state,
+        zip: locationData.zip
+      });
+
       let locData = {
         street: locationData.street,
         city: locationData.city,
@@ -34,7 +45,6 @@ class Navigation extends Component {
         longitude: locationData.longitude,
         timezone:locationData.timezone,
         walkscoreObj: locationData.walkscoreObj
-
       };
     this.props.giveLocationData(locData);
     }
@@ -45,12 +55,25 @@ class Navigation extends Component {
       <div className="my-nav">
         <nav className="navbar navbar-expand-md my-nav">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
+              <li className="nav-item">
                   <Link to={'/'} className="nav-link my-nav-link">Home</Link>
               </li>
-              <li>
+              <li className="nav-item active">
                   <div onClick={this.toggleSearch} className="nav-link my-nav-link">Search</div>
               </li>
+            </ul>
+            <ul className="navbar-nav ml-auto">
+                {this.state.street ?
+                  (<li className="address-requested">
+                    Requested Address:
+                    {" " + this.state.street + " "}
+                    {this.state.city + " "}
+                    {this.state.state + " "}
+                    {this.state.zip}
+                    </li>
+                  ) : (
+                    <li></li>
+                  )}
             </ul>
         </nav>
         { this.state.search ? (

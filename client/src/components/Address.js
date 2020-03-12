@@ -23,7 +23,7 @@ class Address extends Component{
       zip: this.props.zip,
       latitude: this.props.latitude,
       longitude: this.props.longitude,
-      timezone: timezoneFormatted == "" ? this.props.timezone : timezoneFormatted
+      timezone: timezoneFormatted === "" ? this.props.timezone : timezoneFormatted
     };
   }
 
@@ -47,7 +47,7 @@ class Address extends Component{
         zip: this.props.zip,
         latitude: this.props.latitude,
         longitude: this.props.longitude,
-        timezone:timezoneFormatted == "" ? this.props.timezone : timezoneFormatted
+        timezone:timezoneFormatted === "" ? this.props.timezone : timezoneFormatted
       });
     }
 }
@@ -55,11 +55,9 @@ class Address extends Component{
 render() {
   return (
     <Card className="my-address">
-    <Card.Header className="address-header">Requested Address: </Card.Header>
+    <Card.Header className="address-header">Location: </Card.Header>
       <Card.Body>
         <Card.Text>
-          <div><span className="capitalize">{(this.state.street)}</span></div>
-          <div><span className="capitalize">{(this.state.city)}</span>, <span className="uppercase">{(this.state.state)}</span> {(this.state.zip)}</div>
           <div>
           {Math.abs((this.state.latitude).toFixed(3))}&#176;
           { (this.state.latitude) >=0 ? "N,   " : "S,   " }
