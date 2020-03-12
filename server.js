@@ -24,14 +24,14 @@ const mysql = require('mysql');
 
 dotenv.config();
 
-const data = fs.readFileSync('./databaseHeroku.json');
+const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 const connection = mysql.createConnection({
-  host: process.env.HOST || conf.host,
-  user: process.env.USER || conf.user,
-  password: process.env.PASSWORDDB || conf.password,
-  port: process.env.PORTDB || conf.port,
-  database: process.env.DB || conf.database
+  host: conf.host,
+  user: conf.user,
+  password: conf.password,
+  port: conf.port,
+  database: conf.database
 });
 connection.connect();
 

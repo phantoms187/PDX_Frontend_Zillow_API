@@ -21,6 +21,7 @@ class App extends Component {
       zip: '',
       weather: '',
       icon: '',
+      temperature: ''
     };
   }
   
@@ -32,7 +33,8 @@ class App extends Component {
         state: locationData.state,
         zip: locationData.zip,
         weather: locationData.weather,
-        icon: locationData.icon
+        icon: locationData.icon,
+        temperature: locationData.temperature
       });
     }
   }
@@ -41,7 +43,7 @@ class App extends Component {
     return (
       <HashRouter>
         <Navigation  giveLocationData={this.getLocation}/>
-        <Route path="/" exact={true}> <Home street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
+        <Route path="/" exact={true}> <Home temperature={this.state.temperature} street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
         <Route path="/walkscore" exact={true} component={AboutWS} />
         <Route path="/bikescore" exact={true} component={AboutBS} />
       </HashRouter>

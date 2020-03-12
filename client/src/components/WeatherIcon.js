@@ -11,6 +11,8 @@ class WeatherIcon extends Component{
     this.state = {
       weatherIcon: this.props.weatherIcon,
       weatherForecast: this.props.weatherForecast,
+      city: this.props.city,
+      temperature: this.props.temperature
     };
   }
   
@@ -19,6 +21,8 @@ class WeatherIcon extends Component{
         this.setState({          
             weatherIcon: this.props.weatherIcon,
             weatherForecast: this.props.weatherForecast,
+            city: this.props.city,
+            temperature: this.props.temperature
         });
     }
 }
@@ -26,11 +30,12 @@ class WeatherIcon extends Component{
 render() {
   return (
     <Card className="my-card">
-    <Card.Header className="card-header">Current Weather</Card.Header>
+    <Card.Header className="card-header">Current Weather for {this.state.city} </Card.Header>
     <Skycons className="marginTop10px" color='black' icon= {this.state.weatherIcon} autoplay={true}/>
       <Card.Body>
         <Card.Text>
-          {this.state.weatherForecast}
+          <div>{this.state.weatherForecast}</div>
+          <div>{this.state.temperature / 1}</div>
         </Card.Text>
       </Card.Body>
     </Card>

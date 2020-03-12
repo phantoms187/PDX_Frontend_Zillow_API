@@ -16,6 +16,7 @@ class Home extends Component {
       zip: this.props.zip,
       weather: this.props.weather ? this.props.weather : "",
       icon: this.props.icon ? this.props.icon : "",
+      temperature: this.props.temperature ? this.props.temperature : "",
       realestateObj:''
     };
   }
@@ -28,7 +29,8 @@ class Home extends Component {
             state: this.props.state,
             zip: this.props.zip,
             weather: this.props.weather,
-            icon: this.props.icon
+            icon: this.props.icon,
+            temperature: this.props.temperature,
         });
     }
   }
@@ -45,7 +47,7 @@ class Home extends Component {
     console.log(body);
     return body;
   }
-  
+
 
   render (){
     return (
@@ -53,7 +55,7 @@ class Home extends Component {
       
       { this.state.icon ? 
         (
-          <WeatherIcon weatherIcon={this.state.icon} weatherForecast={this.state.weather} />
+          <WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} />
         ) :
            (<div></div>)
       }
