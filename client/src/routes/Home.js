@@ -6,10 +6,7 @@ import AboutWS from "./AboutWS";
 import AboutBS from "./AboutBS";
 import Card from 'react-bootstrap/Card'
 
-
-
 import './Home.css';
-
 
 class Home extends Component {
 
@@ -51,7 +48,7 @@ class Home extends Component {
   render (){
     return (
     <div className="my-app">
-      { this.state.icon ?
+      { this.state.walkscoreObj ?
         (
           <div className="box">
             <div className="weather">
