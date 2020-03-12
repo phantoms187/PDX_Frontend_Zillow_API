@@ -47,9 +47,7 @@ app.post('/weather', (req, res) => {
     let long = '';
     let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
     let time = moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
-
-
-
+console.log("Workin");
     (async () => {
       const geoCoordinates = await getCoordinates(place);
         lat = geoCoordinates[0].latitude;
