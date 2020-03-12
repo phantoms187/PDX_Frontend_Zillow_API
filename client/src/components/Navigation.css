@@ -22,3 +22,10 @@
   font-size: 16px;
   margin: 5px 20px 10px 20px;
 }
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

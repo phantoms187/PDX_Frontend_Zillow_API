@@ -66,9 +66,9 @@ class Navigation extends Component {
                 {this.state.street ?
                   (<li className="address-requested">
                     Requested Address:
-                    {"    " + this.state.street + " "}
-                    {this.state.city + " "}
-                    {this.state.state + " "}
+                    <span className="capitalize"> {"\t " + this.state.street + " "}</span>
+                    <span className="capitalize"> {this.state.city + ", "}</span>
+                    <span className="uppercase"> {this.state.state + " "}</span>
                     {this.state.zip}
                     </li>
                   ) : (
