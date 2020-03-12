@@ -12,7 +12,7 @@ const fetch = require('node-fetch');
 
 
 
-dotenv.config();
+// dotenv.config();
 const port = process.env.PORT || 4000;
 const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349"; //For weather info
 // var zillowID = process.env.zillowAPI || "X1-ZWz1hn7j7dra4r_6h6e1";
@@ -73,7 +73,6 @@ app.post('/weather', (req, res) => {
         lat = geoCoordinates[0].latitude;
         long = geoCoordinates[0].longitude;
         request('https://api.darksky.net/forecast/' + darkSkyAPI + '/' + lat +',' + long, function (error, response, body) {
-            console.log("working");
             const newBody = JSON.parse(body);
             res.json(newBody);
         });
