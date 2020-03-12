@@ -22,8 +22,8 @@
 
 .waiting {
   text-align: center;
-  grid-column: 1 / 3-end;
-  grid-row: 1 / 2-end;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
   align-self: center;
   justify-self: center;
 }

@@ -70,6 +70,7 @@ class Home extends Component {
           </div>
         ) :
         (
+          <div className="box">
           <div className="waiting">
             <Card>
             <Card.Header>Welcome!</Card.Header>
@@ -79,6 +80,7 @@ class Home extends Component {
                 </Card.Text>
               </Card.Body>
             </Card>
+          </div>
           </div>
         )
       }
