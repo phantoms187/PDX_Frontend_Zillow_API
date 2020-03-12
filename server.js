@@ -74,6 +74,7 @@ app.post('/weather', (req, res) => {
         lat = geoCoordinates[0].latitude;
         long = geoCoordinates[0].longitude;
         request('https://api.darksky.net/forecast/' + darkSkyAPI + '/' + lat +',' + long, function (error, response, body) {
+            console.log("working");
             const newBody = JSON.parse(body);
             res.json(newBody);
         });
