@@ -7,7 +7,7 @@ const request = require('request');
 var moment = require('moment');
 const dotenv = require('dotenv');
 const axios = require('axios');
-const Zillow = require('node-zillow');
+//const Zillow = require('node-zillow');
 const fetch = require('node-fetch');
 
 
@@ -15,25 +15,25 @@ const fetch = require('node-fetch');
 dotenv.config();
 const port = process.env.PORT || 4000;
 const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349"; //For weather info
-var zillowID = process.env.zillowAPI || "X1-ZWz1hn7j7dra4r_6h6e1";
-var zillowAPI = new Zillow(zillowID);
+// var zillowID = process.env.zillowAPI || "X1-ZWz1hn7j7dra4r_6h6e1";
+// var zillowAPI = new Zillow(zillowID);
 const walkScoreAPI = process.env.walkScoreAPI;
 
 const fs = require('fs');
-const mysql = require('mysql');
+//const mysql = require('mysql');
 
 dotenv.config();
 
-const data = fs.readFileSync('./database.json');
-const conf = JSON.parse(data);
-const connection = mysql.createConnection({
-  host: process.env.HOST || conf.host,
-  user: process.env.USER || conf.user,
-  password: process.env.PASSWORDDB || conf.password,
-  port: process.env.PORTDB || conf.port,
-  database: process.env.DB || conf.database
-});
-connection.connect();
+// const data = fs.readFileSync('./database.json');
+// const conf = JSON.parse(data);
+// const connection = mysql.createConnection({
+//   host: process.env.HOST || conf.host,
+//   user: process.env.USER || conf.user,
+//   password: process.env.PASSWORDDB || conf.password,
+//   port: process.env.PORTDB || conf.port,
+//   database: process.env.DB || conf.database
+// });
+// connection.connect();
 
 var NodeGeocoder = require('node-geocoder');
 var options = {
@@ -61,14 +61,14 @@ app.use(express.static(path.join(__dirname, './client/build/')));
 
 
 app.post('/weather', (req, res) => {
-  
+
     let lat = '';
     let long = '';
     let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
     let time = moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
-    
-   
-    
+
+
+
     (async () => {
       const geoCoordinates = await getCoordinates(place);
         lat = geoCoordinates[0].latitude;
@@ -80,15 +80,15 @@ app.post('/weather', (req, res) => {
         lat = '';
         long = '';
     })();
-    
+
 });
 
 app.post('/walkscore', (req, res) => {
-  
+
   let lat = '';
   let long = '';
   let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
- 
+
   geocoder.geocode(place)
     .then(function(geores) {
       lat = geores[0].latitude;
@@ -96,7 +96,7 @@ app.post('/walkscore', (req, res) => {
       let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&wsapikey=${walkScoreAPI}`;
       axios.get(url)
         .then( (response) => {
-          res.send(response.data);  
+          res.send(response.data);
         })
         .catch((err)=>{
           console.log(err);
@@ -105,11 +105,11 @@ app.post('/walkscore', (req, res) => {
     .catch(function(err) {
       console.log(err);
     });
-  
+
 });
 
 app.post('/bikescore', (req, res) => {
-  
+
   let lat = '';
   let long = '';
   let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
@@ -121,7 +121,7 @@ app.post('/bikescore', (req, res) => {
       let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&transit=1&bike=1&wsapikey=${walkScoreAPI}`;
       axios.get(url)
         .then( (response) => {
-          res.send(response.data.bike);  
+          res.send(response.data.bike);
         })
         .catch((err)=>{
           console.log(err);
@@ -133,32 +133,32 @@ app.post('/bikescore', (req, res) => {
 
 });
 
-app.get('/zillow', (req, res) => {
-  var parameters = {
-    zpid: 48690106
-  };
-
-  zillowAPI.get('GetZestimate', parameters)
-    .then(function(results) {
-      console.log(results);
-      // results here is an object { message: {}, request: {}, response: {}}
-    });
-
-});
-
-app.get('/zillow', (req, res) => {
-  let street = '232 SW 200th Ave';
-  let city = 'Beaverton';
-  let state = 'OR';
-  let zip = '97006';
-  connection.query(
-    "SELECT * FROM REALESTATE WHERE street = '232 SW 200th Ave' AND city='Beaverton' AND state='OR' AND zip='97006'",
-    (err,rows,fields) => {
-      console.log(rows);
-      res.send(rows);
-    }
-  );      
-});
+// app.get('/zillow', (req, res) => {
+//   var parameters = {
+//     zpid: 48690106
+//   };
+//
+//   zillowAPI.get('GetZestimate', parameters)
+//     .then(function(results) {
+//       console.log(results);
+//       // results here is an object { message: {}, request: {}, response: {}}
+//     });
+//
+// });
+//
+// app.get('/zillow', (req, res) => {
+//   let street = '232 SW 200th Ave';
+//   let city = 'Beaverton';
+//   let state = 'OR';
+//   let zip = '97006';
+//   connection.query(
+//     "SELECT * FROM REALESTATE WHERE street = '232 SW 200th Ave' AND city='Beaverton' AND state='OR' AND zip='97006'",
+//     (err,rows,fields) => {
+//       console.log(rows);
+//       res.send(rows);
+//     }
+//   );
+// });
 
 
 
