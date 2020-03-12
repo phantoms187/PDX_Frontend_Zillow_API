@@ -92,7 +92,7 @@ app.post('/walkscore', (req, res) => {
     .then(function(geores) {
       lat = geores[0].latitude;
       lon = geores[0].longitude;
-      let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&wsapikey=${walkScoreAPI}`;
+      let url = `http://api.walkscore.com/score?format=json&address=${place}&lat=${lat}&lon=${lon}&transit=1&bike=1&wsapikey=${walkScoreAPI}`;
       axios.get(url)
         .then( (response) => {
           res.send(response.data);
