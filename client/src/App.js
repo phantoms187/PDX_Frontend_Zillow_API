@@ -44,8 +44,9 @@ class App extends Component {
       <HashRouter>
         <Navigation  giveLocationData={this.getLocation}/>
         <Route path="/" exact={true}> <Home temperature={this.state.temperature} street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
-        <Route path="/walkscore" exact={true} component={AboutWS} />
-        <Route path="/bikescore" exact={true} component={AboutBS} />
+
+        <Route path="/walkscore" exact={true}> <AboutWS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
+        <Route path="/bikescore" exact={true}> <AboutBS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
       </HashRouter>
     );
   }
