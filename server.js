@@ -24,6 +24,7 @@ const fs = require('fs');
 
 dotenv.config();
 
+<<<<<<< HEAD
 // const data = fs.readFileSync('./database.json');
 // const conf = JSON.parse(data);
 // const connection = mysql.createConnection({
@@ -34,6 +35,18 @@ dotenv.config();
 //   database: process.env.DB || conf.database
 // });
 // connection.connect();
+=======
+const data = fs.readFileSync('./database.json');
+const conf = JSON.parse(data);
+const connection = mysql.createConnection({
+  host: conf.host,
+  user: conf.user,
+  password: conf.password,
+  port: conf.port,
+  database: conf.database
+});
+connection.connect();
+>>>>>>> ed6db5f6dd3172b0571c0f2454736ec984d0ae14
 
 var NodeGeocoder = require('node-geocoder');
 var options = {

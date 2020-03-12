@@ -28,7 +28,9 @@ class Navigation extends Component {
         state: locationData.state,
         zip: locationData.zip,
         weather: locationData.weather,
-        icon: locationData.icon
+        icon: locationData.icon,
+        temperature: locationData.temperature,
+
       };
     this.props.giveLocationData(locData);
     }
