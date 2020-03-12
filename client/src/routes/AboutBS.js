@@ -6,46 +6,36 @@ class AboutBS extends Component {
   constructor(props){
     super(props);
     this.state = {
-      street: this.props.street ? this.props.street: "",
-      city: this.props.city ? this.props.city : "",
-      state: this.props.state ? this.props.state : "",
-      zip: this.props.zip,
-      weather: this.props.weather ? this.props.weather : "",
-      icon: this.props.icon ? this.props.icon : "",
-      bikescoreObj:''
+      bikescoreObj: this.props.bikescoreObj ? this.props.bikescoreObj: ""
     };
   }
+
   componentDidUpdate(prevProps){
     if(prevProps !== this.props){
-        this.setState({    
-            street: this.props.street,
-            city: this.props.city,
-            state: this.props.state,
-            zip: this.props.zip,
-            weather: this.props.weather,
-            icon: this.props.icon
+        this.setState({
+          bikescoreObj: this.props.bikescoreObj
         });
     }
   }
 
-  componentDidMount(){
-    const place = {
-      street: this.state.street,
-      city: this.state.city,
-      state: this.state.state,
-      zip: this.state.zip
-    };
-
-    axios.post('/bikescore', place)
-    .then(response => {
-      this.setState({
-        bikescoreObj: response.data
-      });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-  }
+  // componentDidMount(){
+  //   const place = {
+  //     street: this.state.street,
+  //     city: this.state.city,
+  //     state: this.state.state,
+  //     zip: this.state.zip
+  //   };
+  //
+  //   axios.post('/bikescore', place)
+  //   .then(response => {
+  //     this.setState({
+  //       bikescoreObj: response.data
+  //     });
+  //   })
+  //   .catch((error) => {
+  //       console.log(error);
+  //   });
+  // }
 
   render(){
 

@@ -75,7 +75,7 @@ class Home extends Component {
           <AboutWS walkscoreObj={this.state.walkscoreObj}/>
         </div>
         <div className="bikescore">
-          <Link to="/bikescore">Bike Score</Link>
+          <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
         </div>
       </div>
     </div>

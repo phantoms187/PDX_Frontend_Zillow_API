@@ -9,6 +9,7 @@ class AboutWS extends Component {
       walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
     };
   }
+  
   componentDidUpdate(prevProps){
     if(prevProps !== this.props){
         this.setState({
