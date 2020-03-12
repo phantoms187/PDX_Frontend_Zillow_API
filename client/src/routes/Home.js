@@ -3,6 +3,8 @@ import { Link } from  "react-router-dom";
 
 import WeatherIcon from '../components/WeatherIcon';
 import Address from '../components/Address';
+import AboutWS from "./AboutWS";
+import AboutBS from "./AboutBS";
 
 
 import './Home.css';
@@ -22,7 +24,10 @@ class Home extends Component {
       temperature: this.props.temperature ? this.props.temperature : "",
       latitude: this.props.latitude ? this.props.latitude : "",
       longitude: this.props.longitude ? this.props.longitude : "",
-      timezone:this.props.timezone ? this.props.timezone : ""
+      timezone:this.props.timezone ? this.props.timezone : "",
+      walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
+
+
     };
   }
 
@@ -38,7 +43,8 @@ class Home extends Component {
             temperature: this.props.temperature,
             latitude: this.props.latitude,
             longitude: this.props.longitude,
-            timezone:this.props.timezone
+            timezone:this.props.timezone,
+            walkscoreObj: this.props.walkscoreObj
         });
     }
   }
@@ -66,7 +72,7 @@ class Home extends Component {
         ( <div className="address"></div> )
       }
         <div className="walkscore">
-          <Link to="/walkscore">Walk Score</Link>
+          <AboutWS walkscoreObj={this.state.walkscoreObj}/>
         </div>
         <div className="bikescore">
           <Link to="/bikescore">Bike Score</Link>

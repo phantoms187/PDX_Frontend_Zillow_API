@@ -32,7 +32,9 @@ class Navigation extends Component {
         temperature: locationData.temperature,
         latitude: locationData.latitude,
         longitude: locationData.longitude,
-        timezone:locationData.timezone
+        timezone:locationData.timezone,
+        walkscoreObj: locationData.walkscoreObj
+
       };
     this.props.giveLocationData(locData);
     }

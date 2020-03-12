@@ -41,10 +41,12 @@ class App extends Component {
         temperature: locationData.temperature,
         latitude: locationData.latitude,
         longitude: locationData.longitude,
-        timezone:locationData.timezone
+        timezone:locationData.timezone,
+        walkscoreObj: locationData.walkscoreObj
       });
     }
   }
+  // <Route path="/walkscore" exact={true}> <AboutWS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
 
   render (){
     return (
@@ -52,7 +54,6 @@ class App extends Component {
         <Navigation  giveLocationData={this.getLocation}/>
         <Route path="/" exact={true}> <Home className="container home" {...this.state}/></Route>
 
-        <Route path="/walkscore" exact={true}> <AboutWS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
         <Route path="/bikescore" exact={true}> <AboutBS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
       </HashRouter>
     );

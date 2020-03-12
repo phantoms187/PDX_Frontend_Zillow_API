@@ -35,6 +35,7 @@ class Search extends Component {
       latitude: this.state.latitude,
       longitude: this.state.longitude,
       timezone:this.state.timezone,
+      walkscoreObj: this.state.walkscoreObj
     };
     this.props.giveLocationData(locationData);
   }
@@ -53,6 +54,16 @@ class Search extends Component {
       state: this.state.locationState,
       zip: !isEmpty(this.state.locationZip) ? this.state.locationZip : "",
     };
+
+    axios.post('/walkscore', place)
+    .then(response => {
+      this.setState({
+        walkscoreObj: response.data
+      });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 
     axios.post('/weather', place)
     .then(response => {

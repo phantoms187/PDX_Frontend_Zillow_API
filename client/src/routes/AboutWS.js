@@ -6,53 +6,42 @@ class AboutWS extends Component {
   constructor(props){
     super(props);
     this.state = {
-      street: this.props.street ? this.props.street: "",
-      city: this.props.city ? this.props.city : "",
-      state: this.props.state ? this.props.state : "",
-      zip: this.props.zip,
-      weather: this.props.weather ? this.props.weather : "",
-      icon: this.props.icon ? this.props.icon : "",
-      walkscoreObj:''
+      walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
     };
   }
   componentDidUpdate(prevProps){
     if(prevProps !== this.props){
-        this.setState({    
-            street: this.props.street,
-            city: this.props.city,
-            state: this.props.state,
-            zip: this.props.zip,
-            weather: this.props.weather,
-            icon: this.props.icon
+        this.setState({
+            walkscoreObj: this.props.walkscoreObj
         });
     }
   }
 
-  componentDidMount(){
-    const place = {
-      street: this.state.street,
-      city: this.state.city,
-      state: this.state.state,
-      zip: this.state.zip
-    };
-
-    axios.post('/walkscore', place)
-    .then(response => {
-      this.setState({
-        walkscoreObj: response.data
-      });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-  }
+  // componentDidMount(){
+  //   const place = {
+  //     street: this.state.street,
+  //     city: this.state.city,
+  //     state: this.state.state,
+  //     zip: this.state.zip
+  //   };
+  //
+  //   axios.post('/walkscore', place)
+  //   .then(response => {
+  //     this.setState({
+  //       walkscoreObj: response.data
+  //     });
+  //   })
+  //   .catch((error) => {
+  //       console.log(error);
+  //   });
+  // }
 
 
   render(){
 
     return (
       <section className="container">
-        
+
         {this.state.walkscoreObj ?
           (
             <div>
