@@ -12,7 +12,11 @@
   padding: 25px;
   justify-items: stretch;
   align-items: stretch;
+}
 
+.ball {
+  background-color: blue;
+  border-radius: 50%;
 }
 
 .uparrow {
