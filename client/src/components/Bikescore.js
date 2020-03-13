@@ -4,7 +4,7 @@ import Collapsible from 'react-collapsible';
 
 class BikeScore extends React.Component {
 
-
+  //Return additional description of bikescore
   addDescription(score) {
     if ( Number(score) <= 49)
       return "Minimal bike infrastructure.";
@@ -17,6 +17,7 @@ class BikeScore extends React.Component {
     else
       return "Not yet decided.";
   }
+  //Display score, discription and detail
   render() {
     let description_sec = this.addDescription(this.props.score);
     return (

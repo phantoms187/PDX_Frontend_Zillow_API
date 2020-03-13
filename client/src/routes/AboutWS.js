@@ -37,7 +37,7 @@ class AboutWS extends Component {
   //   });
   // }
 
-
+  //Walkscore page rendering
   render(){
 
     return (

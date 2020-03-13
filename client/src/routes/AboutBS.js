@@ -18,6 +18,7 @@ class AboutBS extends Component {
     }
   }
 
+
   // componentDidMount(){
   //   const place = {
   //     street: this.state.street,
@@ -37,6 +38,7 @@ class AboutBS extends Component {
   //   });
   // }
 
+  //Bikescore page rendering
   render(){
 
     return (

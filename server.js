@@ -58,6 +58,7 @@ app.post('/weather', (req, res) => {
     })();
 });
 
+//Get data through walkscore API and respond to this call.
 app.post('/walkscore', (req, res) => {
 
   let lat = '';
