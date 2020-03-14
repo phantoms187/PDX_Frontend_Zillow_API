@@ -16,9 +16,15 @@ class Home extends Component {
 //Constructor to run at instance of new Home
   constructor(props) {
     super(props);
+    this.state = {
+      walkscore: false;
+    }
   }
 //Update Component if props change
   componentDidUpdate(prevProps){
+    this.setState() {
+      walkscore: true;
+    }
   }
 
   render (){
@@ -52,7 +58,7 @@ class Home extends Component {
               <div className="chart">
               <CanvasJSChart options = {options} />
               </div>
-              { walkScoreReady ?
+              { this.walkscore || walkScoreReady ?
                 (
                     <div className="walkscore">
                     <AboutWS walkscoreObj={this.props.walkscoreObj}/>
@@ -63,7 +69,7 @@ class Home extends Component {
                     <p>Loading...</p>
                     </div>
                 ) }
-                { walkScoreReady ?
+                { this.walkscore || walkScoreReady ?
                   (
                       <div className="bikescore">
                         <AboutBS bikescoreObj={this.props.walkscoreObj.bike}/>
