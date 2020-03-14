@@ -40,7 +40,7 @@ class Home extends Component {
     return (
       <div className="my-app">
 
-        { walkScoreReady ?
+        { icon ?
           (
             <div className="box">
               <div className="weather">
