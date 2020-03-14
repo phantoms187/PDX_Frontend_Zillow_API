@@ -9,6 +9,26 @@ class AboutWS extends Component {
   componentDidUpdate(prevProps){
   }
 
+  // componentDidMount(){
+  //   const place = {
+  //     street: this.state.street,
+  //     city: this.state.city,
+  //     state: this.state.state,
+  //     zip: this.state.zip
+  //   };
+  //
+  //   axios.post('/walkscore', place)
+  //   .then(response => {
+  //     this.setState({
+  //       walkscoreObj: response.data
+  //     });
+  //   })
+  //   .catch((error) => {
+  //       console.log(error);
+  //   });
+  // }
+
+  //Walkscore page rendering
   render(){
     return (
       <section className="container">

@@ -3,7 +3,7 @@ import './Walkscore.css';
 import Collapsible from 'react-collapsible';
 
 class Walkscore extends React.Component {
-
+  //Return additional description of walkscore
   addDescription(score) {
     if (Number(score) <= 24)
       return "Almost all errands require a car.";
@@ -18,6 +18,7 @@ class Walkscore extends React.Component {
     else
       return "Not yet decided.";
   }
+  //Display score, discription and detail
   render() {
     let description_sec = this.addDescription(this.props.score);
     return (

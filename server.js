@@ -55,7 +55,8 @@ app.post('/weather', (req, res) => {
         long = '';
     })();
 });
-//walkscore API to get walk and bike score information
+
+//Get data through walkscore API and respond to this call.
 app.post('/walkscore', (req, res) => {
   let lat = '';
   let long = '';
@@ -80,6 +81,41 @@ app.post('/walkscore', (req, res) => {
 
 });
 
+app.post('/neighbor', (req,res) => {
+
+  let lat = '';
+  let long = '';
+  let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
+
+  geocoder.geocode(place)
+    .then(function(geores) {
+      lat = geores[0].latitude;
+      lon = geores[0].longitude;
+      let url = `https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=5&currency=USD&distance=2&lunit=km&lang=en_US&latitude=${lat}&longitude=${lon}`;
+      params = {
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+          "x-rapidapi-key": "8d488bea97msh3d5e1feb78b4ff6p1550e7jsnb35a6d4f5efa"
+        }
+      };
+      axios.get(url,params)
+        .then( (response) => {
+          //console.log(response.data.data);
+          res.send(response.data.data);
+        })
+        .catch((err)=>{
+          console.log(err);
+        });
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+});
+
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, 'client/build/index.html'));
+// });
 app.listen(port, () =>{
   console.log('Server is running on Port:', port);
 });

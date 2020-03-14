@@ -9,6 +9,26 @@ class AboutBS extends Component {
   componentDidUpdate(prevProps){
   }
 
+  // componentDidMount(){
+  //   const place = {
+  //     street: this.state.street,
+  //     city: this.state.city,
+  //     state: this.state.state,
+  //     zip: this.state.zip
+  //   };
+  //
+  //   axios.post('/bikescore', place)
+  //   .then(response => {
+  //     this.setState({
+  //       bikescoreObj: response.data
+  //     });
+  //   })
+  //   .catch((error) => {
+  //       console.log(error);
+  //   });
+  // }
+
+  //Bikescore page rendering
   render(){
     return (
       <section className="container">

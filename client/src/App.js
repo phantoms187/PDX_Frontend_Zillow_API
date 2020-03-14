@@ -37,7 +37,8 @@ class App extends Component {
         latitude: locationData.latitude,
         longitude: locationData.longitude,
         timezone:locationData.timezone,
-        walkscoreObj: locationData.walkscoreObj
+        walkscoreObj: locationData.walkscoreObj,
+        neighborObj: locationData.neighborObj
       });
     }
   }
