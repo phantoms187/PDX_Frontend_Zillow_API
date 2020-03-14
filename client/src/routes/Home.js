@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-
+//Imports for each component
 import WeatherIcon from '../components/WeatherIcon';
 import Address from '../components/Address';
 import AboutWS from "./AboutWS";
 import AboutBS from "./AboutBS";
 import Card from 'react-bootstrap/Card';
 import './Home.css';
-
+//Import for Canvas to make graph
 import CanvasJSReact from '../canvasjs.react';
-//var CanvasJSReact = require('./canvasjs.react');
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-
+//Class for Home component to hold and arrange all components
 class Home extends Component {
-
+//Constructor to run at instance of new Home
   constructor(props) {
     super(props);
+    //Set initial state for Home component
     this.state = {
       street: this.props.street,
       city: this.props.city ? this.props.city : "",
@@ -31,7 +31,7 @@ class Home extends Component {
       walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
     };
   }
-
+//Update Component if props change
   componentDidUpdate(prevProps){
     if(prevProps !== this.props){
         this.setState({
@@ -51,8 +51,10 @@ class Home extends Component {
   }
 
   render (){
+    //Set variables to state to know if a rerender is needed
     const walkScoreReady = this.state.walkscoreObj;
     const icon = this.state.icon;
+    //Options for the Canvas graph, setup taken directly fron canvasjs website
     const options = {
       title: {
         text: "Position"
@@ -67,10 +69,11 @@ class Home extends Component {
    }
 
     return (
-
+//Enclose in a single div to hold whole Home component
       <div className="my-app">
+      //Check if needed icon property is set otherwise show waiting screen
         { icon ?
-          (
+          (//Box formatted to place other componets using grid display
             <div className="box">
               <div className="weather">
               <span><WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} /></span>
@@ -81,6 +84,7 @@ class Home extends Component {
               <div className="chart">
               <CanvasJSChart options = {options} />
               </div>
+              //walkscoretakes longer sometimes to load so a second check is done
               { walkScoreReady ?
                 (
                     <div className="walkscore">
@@ -105,7 +109,7 @@ class Home extends Component {
                   ) }
             </div>
           ) :
-          (
+          (//If no address has been received yet then show a welcome screen
             <div className="box-waiting">
             <div className="waiting">
               <Card>
@@ -114,6 +118,7 @@ class Home extends Component {
                   <Card.Text>
                     <p>Enter an address using the Search Option above <span className="uparrow">&#8679;</span></p>
                     <div className="ball-container">
+                    //Added a fun animation to display my knowledge of css
                       <div className="ball"></div>
                     </div>
                   </Card.Text>

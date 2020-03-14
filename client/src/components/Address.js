@@ -4,7 +4,7 @@ import './Address.css';
 
 
 class Address extends Component{
-
+//Set state according to initial props. Set timezone to usable format
   constructor(props){
     super(props);
     var timezoneFormatted = "";
@@ -26,10 +26,9 @@ class Address extends Component{
       timezone: timezoneFormatted === "" ? this.props.timezone : timezoneFormatted
     };
   }
-
+//If props change then set new state
   componentDidUpdate(prevProps){
     if(prevProps !== this.props){
-
       var timezoneFormatted = "";
       if((this.props.timezone).includes("New_York"))
         timezoneFormatted = "Eastern";
@@ -59,12 +58,14 @@ render() {
       <Card.Body>
         <Card.Text>
           <div>
+          //Use only positive number for lat/long and adjust direction letter appropriately
           {Math.abs((this.state.latitude).toFixed(3))}&#176;
           { (this.state.latitude) >=0 ? "N,   " : "S,   " }
           {Math.abs((this.state.longitude).toFixed(3))}&#176;
           { (this.state.longitude) >=0 ? "E" : "W" }
           </div>
           <div>
+            //Use css class to capitalize the time zone 
             <span className="capitalize">Timezone: {(this.state.timezone)}</span>
           </div>
         </Card.Text>

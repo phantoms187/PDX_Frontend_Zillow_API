@@ -3,12 +3,7 @@ import { HashRouter, Route} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-
-
-// import AboutWS from "./routes/AboutWS";
-// import AboutBS from "./routes/AboutBS";
 import Home from "./routes/Home";
-
 import Navigation from "./components/Navigation";
 
 class App extends Component {
@@ -28,7 +23,7 @@ class App extends Component {
 
     };
   }
-
+//Get data from Navigation component
    getLocation = (locationData) => {
     if(locationData) {
       this.setState({
@@ -46,15 +41,12 @@ class App extends Component {
       });
     }
   }
-  // <Route path="/walkscore" exact={true}> <AboutWS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
-  //<Route path="/bikescore" exact={true}> <AboutBS street={this.state.street} zip={this.state.zip} icon={this.state.icon} city={this.state.city} state={this.state.state} weather={this.state.weather}/></Route>
 
   render (){
     return (
       <HashRouter>
         <Navigation  giveLocationData={this.getLocation}/>
         <Route path="/" exact={true}> <Home className="container home" {...this.state}/></Route>
-
       </HashRouter>
     );
   }
