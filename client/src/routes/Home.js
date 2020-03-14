@@ -49,7 +49,7 @@ class Home extends Component {
     setTimeout(function(){}, 1000);
     return (
     <div className="my-app">
-      { this.state.walkscoreObj ?
+      { this.state.icon ?
         (
           <div className="box">
             <div className="weather">
