@@ -4,9 +4,14 @@ import WeatherIcon from '../components/WeatherIcon';
 import Address from '../components/Address';
 import AboutWS from "./AboutWS";
 import AboutBS from "./AboutBS";
-import Card from 'react-bootstrap/Card'
-
+import Card from 'react-bootstrap/Card';
 import './Home.css';
+
+import CanvasJSReact from '../canvasjs.react';
+//var CanvasJSReact = require('./canvasjs.react');
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 
 class Home extends Component {
 
@@ -48,7 +53,21 @@ class Home extends Component {
   render (){
     const walkScoreReady = this.state.walkscoreObj;
     const icon = this.state.icon;
+    const options = {
+      title: {
+        text: "Position"
+      },
+      data: [{
+                type: "column",
+                dataPoints: [
+                    { label: "latitude",  y: this.state.latitude },
+                    { label: "longitude", y: this.state.longitude }
+                ]
+       }]
+   }
+
     return (
+
       <div className="my-app">
         { icon ?
           (
@@ -58,6 +77,9 @@ class Home extends Component {
               </div>
               <div className="address">
               <span><Address {...this.state} /></span>
+              </div>
+              <div className="chart">
+              <CanvasJSChart options = {options} />
               </div>
               { walkScoreReady ?
                 (

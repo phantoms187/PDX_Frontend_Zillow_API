@@ -22,6 +22,7 @@
   "homepage": "https://github.com/phantoms187/PDX_Frontend_Zillow_API#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "canvas": "^2.6.1",
     "cors": "^2.8.5",
     "dark-sky": "^1.1.5",
     "dotenv": "^8.2.0",
@@ -30,11 +31,11 @@
     "moment": "^2.24.0",
     "mongoose": "^5.9.2",
     "mysql": "^2.18.1",
+    "node-fetch": "^2.6.0",
     "node-geocoder": "^3.25.0",
     "node-zillow": "^2.0.0",
     "react-collapsible": "^2.7.0",
-    "yarn": "^1.22.4",
-    "node-fetch": "^2.6.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "yarn": "^1.22.4"
   }
 }
