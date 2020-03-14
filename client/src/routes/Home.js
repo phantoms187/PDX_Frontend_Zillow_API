@@ -50,37 +50,20 @@ class Home extends Component {
           (
             <div className="box">
               <div className="weather">
-              <span><WeatherIcon temperature={this.props.temperature} city={this.props.city} weatherIcon={this.props.icon} weatherForecast={this.props.weather} /></span>
+                <span><WeatherIcon temperature={this.props.temperature} city={this.props.city} weatherIcon={this.props.icon} weatherForecast={this.props.weather} /></span>
               </div>
               <div className="address">
-              <span><Address {...this.props} /></span>
+                <span><Address {...this.props} /></span>
               </div>
               <div className="chart">
-              <CanvasJSChart options = {options} />
+                <CanvasJSChart options = {options} />
               </div>
-              { this.state.walkscore || walkScoreReady ?
-                (
-                    <div className="walkscore">
-                    <AboutWS walkscoreObj={this.props.walkscoreObj}/>
-                    </div>
-                ) :
-                (
-                    <div className="walkscore">
-                    <p>Loading...</p>
-                    </div>
-                ) }
-                { this.state.walkscore || walkScoreReady ?
-                  (
-                      <div className="bikescore">
-                        <AboutBS bikescoreObj={this.props.walkscoreObj.bike}/>
-                      </div>
-                  ) :
-                  (
-                      <div className="bikescore">
-                        <p>Loading...</p>
-                      </div>
-                  )
-                }
+              <div className="walkscore">
+                <AboutWS walkscoreObj={this.props.walkscoreObj}/>
+              </div>
+              <div className="bikescore">
+                <AboutBS bikescoreObj={this.props.walkscoreObj.bike}/>
+              </div>
             </div>
           ) :
           (

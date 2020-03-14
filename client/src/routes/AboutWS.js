@@ -12,9 +12,18 @@ class AboutWS extends Component {
   render(){
     return (
       <section className="container">
-        <div>
-          <Walkscore score={this.props.walkscoreObj.walkscore} description={this.props.walkscoreObj.description} />
-        </div>
+      { this.props.walkscoreObj ?
+        (
+            <div>
+              <Walkscore score={this.props.walkscoreObj.walkscore} description={this.props.walkscoreObj.description} />
+            </div>
+        ) :
+        (
+            <div>
+            <p>Loading...</p>
+            </div>
+        )
+      }
       </section>
     );
   }

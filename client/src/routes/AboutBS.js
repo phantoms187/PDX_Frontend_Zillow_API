@@ -13,7 +13,18 @@ class AboutBS extends Component {
     return (
       <section className="container">
         <div>
-          <Bikescore score={this.props.bikescoreObj.score} description={this.props.bikescoreObj.description} />
+        { this.props.bikescoreObj ?
+          (
+            <div>
+            <Bikescore score={this.props.bikescoreObj.score} description={this.props.bikescoreObj.description} />
+            </div>
+          ) :
+          (
+            <div>
+              <p>Loading...</p>
+            </div>
+          )
+        }
         </div>
       </section>
     );
