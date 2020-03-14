@@ -58,7 +58,7 @@ class Home extends Component {
               <div className="chart">
               <CanvasJSChart options = {options} />
               </div>
-              { this.walkscore || walkScoreReady ?
+              { this.state.walkscore || walkScoreReady ?
                 (
                     <div className="walkscore">
                     <AboutWS walkscoreObj={this.props.walkscoreObj}/>
@@ -69,7 +69,7 @@ class Home extends Component {
                     <p>Loading...</p>
                     </div>
                 ) }
-                { this.walkscore || walkScoreReady ?
+                { this.state.walkscore || walkScoreReady ?
                   (
                       <div className="bikescore">
                         <AboutBS bikescoreObj={this.props.walkscoreObj.bike}/>
