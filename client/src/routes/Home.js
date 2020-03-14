@@ -16,43 +16,14 @@ class Home extends Component {
 //Constructor to run at instance of new Home
   constructor(props) {
     super(props);
-    //Set initial state for Home component
-    this.state = {
-      street: this.props.street,
-      city: this.props.city ? this.props.city : "",
-      state: this.props.state ? this.props.state : "",
-      zip: this.props.zip,
-      weather: this.props.weather ? this.props.weather : "",
-      icon: this.props.icon ? this.props.icon : "",
-      temperature: this.props.temperature ? this.props.temperature : "",
-      latitude: this.props.latitude ? this.props.latitude : "",
-      longitude: this.props.longitude ? this.props.longitude : "",
-      timezone:this.props.timezone ? this.props.timezone : "",
-      walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
-    };
   }
 //Update Component if props change
   componentDidUpdate(prevProps){
-    if(prevProps !== this.props){
-        this.setState({
-            street: this.props.street,
-            city: this.props.city,
-            state: this.props.state,
-            zip: this.props.zip,
-            weather: this.props.weather,
-            icon: this.props.icon,
-            temperature: this.props.temperature,
-            latitude: this.props.latitude,
-            longitude: this.props.longitude,
-            timezone:this.props.timezone,
-            walkscoreObj: this.props.walkscoreObj
-        });
-    }
   }
 
   render (){
-    const walkScoreReady = this.state.walkscoreObj;
-    const icon = this.state.icon;
+    const walkScoreReady = this.props.walkscoreObj;
+    const icon = this.props.icon;
     const options = {
       title: {
         text: "Position"
@@ -60,11 +31,11 @@ class Home extends Component {
       data: [{
                 type: "column",
                 dataPoints: [
-                    { label: "latitude",  y: this.state.latitude },
-                    { label: "longitude", y: this.state.longitude }
+                    { label: "latitude",  y: this.props.latitude },
+                    { label: "longitude", y: this.props.longitude }
                 ]
-       }]
-   }
+            }]
+    }
 
     return (
       <div className="my-app">
@@ -73,10 +44,10 @@ class Home extends Component {
           (
             <div className="box">
               <div className="weather">
-              <span><WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} /></span>
+              <span><WeatherIcon temperature={this.props.temperature} city={this.props.city} weatherIcon={this.props.icon} weatherForecast={this.props.weather} /></span>
               </div>
               <div className="address">
-              <span><Address {...this.state} /></span>
+              <span><Address {...this.props} /></span>
               </div>
               <div className="chart">
               <CanvasJSChart options = {options} />
@@ -84,7 +55,7 @@ class Home extends Component {
               { walkScoreReady ?
                 (
                     <div className="walkscore">
-                    <AboutWS walkscoreObj={this.state.walkscoreObj}/>
+                    <AboutWS walkscoreObj={this.props.walkscoreObj}/>
                     </div>
                 ) :
                 (
@@ -95,16 +66,15 @@ class Home extends Component {
                 { walkScoreReady ?
                   (
                       <div className="bikescore">
-                        {this.setState({ walkscoreObj: this.props.walkscoreObj})}
-                        <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
+                        <AboutBS bikescoreObj={this.props.walkscoreObj.bike}/>
                       </div>
                   ) :
                   (
                       <div className="bikescore">
-                        {this.setState({ walkscoreObj: this.props.walkscoreObj})}
                         <p>Loading...</p>
                       </div>
-                  ) }
+                  )
+                }
             </div>
           ) :
           (
