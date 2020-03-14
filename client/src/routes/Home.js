@@ -61,25 +61,26 @@ class Home extends Component {
               </div>
               { walkScoreReady ?
                 (
-                  <div>
                     <div className="walkscore">
                     <AboutWS walkscoreObj={this.state.walkscoreObj}/>
                     </div>
-                    <div className="bikescore">
-                      <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
-                    </div>
-                  </div>
                 ) :
                 (
-                  <div>
                     <div className="walkscore">
                     <p>Loading...</p>
                     </div>
-                    <div className="bikescore">
-                    <p>Loading...</p>
-                    </div>
-                  </div>
                 ) }
+                { walkScoreReady ?
+                  (
+                      <div className="bikescore">
+                        <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
+                      </div>
+                  ) :
+                  (
+                      <div className="bikescore">
+                      <p>Loading...</p>
+                      </div>
+                  ) }
             </div>
           ) :
           (
