@@ -47,9 +47,10 @@ class Home extends Component {
 
   render (){
     const walkScoreReady = this.state.walkscoreObj;
+    const icon = this.state.icon;
     return (
       <div className="my-app">
-        { walkScoreReady ?
+        { icon ?
           (
             <div className="box">
               <div className="weather">
@@ -58,12 +59,27 @@ class Home extends Component {
               <div className="address">
               <span><Address {...this.state} /></span>
               </div>
-              <div className="walkscore">
-              <AboutWS walkscoreObj={this.state.walkscoreObj}/>
-              </div>
-              <div className="bikescore">
-                <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
-              </div>
+              { walkScoreReady ?
+                (
+                  <div>
+                    <div className="walkscore">
+                    <AboutWS walkscoreObj={this.state.walkscoreObj}/>
+                    </div>
+                    <div className="bikescore">
+                      <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
+                    </div>
+                  </div>
+                ) :
+                (
+                  <div>
+                    <div className="walkscore">
+                    <p>Loading...</p>
+                    </div>
+                    <div className="bikescore">
+                    <p>Loading...</p>
+                    </div>
+                  </div>
+                ) }
             </div>
           ) :
           (
