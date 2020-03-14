@@ -92,11 +92,6 @@ class Search extends Component {
       this.props.toggleSearch();
 
     })
-    .then( () => {
-      this.giveLocationDataFromSearch();
-      this.props.toggleSearch();
-
-    })
     .catch((error) => {
         console.log(error);
     });
