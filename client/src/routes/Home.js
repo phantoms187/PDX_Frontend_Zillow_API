@@ -16,15 +16,9 @@ class Home extends Component {
 //Constructor to run at instance of new Home
   constructor(props) {
     super(props);
-    this.state = {
-      walkscore: false;
-    }
   }
 //Update Component if props change
   componentDidUpdate(prevProps){
-    this.setState() {
-      walkscore: true;
-    }
   }
 
   render (){
