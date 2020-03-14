@@ -67,7 +67,6 @@ class Search extends Component {
 
     axios.post('/neighbor', place)
     .then(response => {
-      let a = response.data;
       this.setState({
         neighborObj: response.data
       });

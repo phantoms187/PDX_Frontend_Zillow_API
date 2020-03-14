@@ -107,30 +107,6 @@ class Home extends Component {
               </Card>
             </div>
             </div>
-            <div>
-              <AboutRes neighborObj={this.state.neighborObj}/>
-            </div>
-          </div>
-        ) :
-        (
-          <div className="box-waiting">
-          <div className="waiting">
-            <Card>
-            <Card.Header>Welcome!</Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  <p>Enter an address using the Search Option above <span className="uparrow">&#8679;</span></p>
-                  <div className="ball-container">
-                    <div className="ball"></div>
-                  </div>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-          </div>
-        )
-      }
-    </div>
           )
         }
       </div>
