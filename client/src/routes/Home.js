@@ -56,7 +56,7 @@ class Home extends Component {
                 <AboutWS walkscoreObj={this.props.walkscoreObj}/>
               </div>
               <div className="bikescore">
-                <AboutBS bikescoreObj={this.props.walkscoreObj.bike}/>
+                <AboutBS bikescoreObj={this.props.walkscoreObj}/>
               </div>
             </div>
           ) :
