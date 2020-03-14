@@ -13,7 +13,7 @@ class AboutBS extends Component {
     return (
       <section className="container">
         <div>
-        { this.props.bikescoreObj.bike ?
+        { this.props.bikescoreObj && this.props.bikescoreObj.bike ?
           (
             <div>
             <Bikescore score={this.props.bikescoreObj.bike.score} description={this.props.bikescoreObj.bike.description} />
