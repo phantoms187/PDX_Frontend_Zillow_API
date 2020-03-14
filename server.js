@@ -15,13 +15,12 @@ const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349";
 const walkScoreAPI = process.env.walkScoreAPI || "6698dd1f586b5e3804c58da4f335cbc8";
 
 const fs = require('fs');
-
+//Variables and function for the geo-coordinates to translate address
 var NodeGeocoder = require('node-geocoder');
 var options = {
   provider: 'opencage',
   apiKey: process.env.openCageAPI || "464ba334d812473fa18bc2b34e8ad854"
 };
-
 var geocoder = NodeGeocoder(options);
 function getCoordinates(place) {
     return new Promise((resolve, reject) => {
@@ -34,17 +33,16 @@ function getCoordinates(place) {
     });
 }
 
-// Routes
+// App specifications to use React static build files
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './client/build/')));
-
+//Weather API gets coordinates from geocoder and sends to dark sky to get weather information
 app.post('/weather', (req, res) => {
     let lat = '';
     let long = '';
     let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
-    let time = moment(req.body.date + " " + req.body.time, 'dddd, MMMM Do YYYY h:mm A').unix();
     (async () => {
       const geoCoordinates = await getCoordinates(place);
         lat = geoCoordinates[0].latitude;
@@ -60,7 +58,6 @@ app.post('/weather', (req, res) => {
 
 //Get data through walkscore API and respond to this call.
 app.post('/walkscore', (req, res) => {
-
   let lat = '';
   let long = '';
   let place = req.body.street + " " + req.body.city + ", " + req.body.state + " " + req.body.zip;
@@ -83,7 +80,6 @@ app.post('/walkscore', (req, res) => {
     });
 
 });
-
 
 app.post('/neighbor', (req,res) => {
 
@@ -120,7 +116,6 @@ app.post('/neighbor', (req,res) => {
 // app.get("/", (req, res) => {
 //     res.sendFile(path.join(__dirname, 'client/build/index.html'));
 // });
-
 app.listen(port, () =>{
   console.log('Server is running on Port:', port);
 });

@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
 import Bikescore from '../components/Bikescore';
 
 class AboutBS extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      bikescoreObj: this.props.bikescoreObj ? this.props.bikescoreObj: ""
-    };
   }
 
   componentDidUpdate(prevProps){
-    if(prevProps !== this.props){
-        this.setState({
-          bikescoreObj: this.props.bikescoreObj
-        });
-    }
   }
-
 
   // componentDidMount(){
   //   const place = {
@@ -40,22 +30,25 @@ class AboutBS extends Component {
 
   //Bikescore page rendering
   render(){
-
     return (
       <section className="container">
-        {this.state.bikescoreObj ?
+        <div>
+        { this.props.bikescoreObj && this.props.bikescoreObj.bike ?
           (
-            <Bikescore score={this.state.bikescoreObj.score} description={this.state.bikescoreObj.description} />
-          ) : (
-            <div className="loader">
-              <span className="loader_text"> Loading...</span>
+            <div>
+            <Bikescore score={this.props.bikescoreObj.bike.score} description={this.props.bikescoreObj.bike.description} />
             </div>
-          )}
+          ) :
+          (
+            <div>
+              <p>Loading...</p>
+            </div>
+          )
+        }
+        </div>
       </section>
     );
-
   }
-
 }
 
 export default AboutBS;

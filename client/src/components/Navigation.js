@@ -4,9 +4,9 @@ import Search from "../routes/Search";
 
 
 import './Navigation.css';
-
+//Class for the top navbar
 class Navigation extends Component {
-
+//Set all state to "" so there won't be any location saved when loaded
   constructor(props){
     super(props);
     this.state = {
@@ -17,14 +17,15 @@ class Navigation extends Component {
       zip: ""
     };
   }
-
+//FUnction to toggle the search bar
   toggleSearch = e => {
     this.setState({
       search: !this.state.search
     });
   }
-
+//Location data bubbled up from search component
    giveLocationData = (locationData) => {
+     //Set state from needed address info from search component
     if(locationData){
       this.setState({
         street: locationData.street,
@@ -32,7 +33,7 @@ class Navigation extends Component {
         state: locationData.state,
         zip: locationData.zip
       });
-
+      //Send all the data from the search component to the main App component
       let locData = {
         street: locationData.street,
         city: locationData.city,

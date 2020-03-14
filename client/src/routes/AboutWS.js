@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
 import Walkscore from '../components/Walkscore';
 
 class AboutWS extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
-    };
   }
 
   componentDidUpdate(prevProps){
-    if(prevProps !== this.props){
-        this.setState({
-            walkscoreObj: this.props.walkscoreObj
-        });
-    }
   }
 
   // componentDidMount(){
@@ -39,17 +30,23 @@ class AboutWS extends Component {
 
   //Walkscore page rendering
   render(){
-
     return (
       <section className="container">
-        <div>
-          <Walkscore score={this.state.walkscoreObj.walkscore} description={this.state.walkscoreObj.description} />
-        </div>
+      { this.props.walkscoreObj ?
+        (
+            <div>
+              <Walkscore score={this.props.walkscoreObj.walkscore} description={this.props.walkscoreObj.description} />
+            </div>
+        ) :
+        (
+            <div>
+            <p>Loading...</p>
+            </div>
+        )
+      }
       </section>
     );
-
   }
-
 }
 
 export default AboutWS;
