@@ -95,12 +95,14 @@ class Home extends Component {
                 { walkScoreReady ?
                   (
                       <div className="bikescore">
+                        {this.setState({ walkscoreObj: this.props.walkscoreObj});}
                         <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
                       </div>
                   ) :
                   (
                       <div className="bikescore">
-                      <p>Loading...</p>
+                        {this.setState({ walkscoreObj: this.props.walkscoreObj});}
+                        <p>Loading...</p>
                       </div>
                   ) }
             </div>
