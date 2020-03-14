@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import WeatherIcon from '../components/WeatherIcon';
 import Address from '../components/Address';
+import AboutRes from './AboutRes';
 import AboutWS from "./AboutWS";
 import AboutBS from "./AboutBS";
 import Card from 'react-bootstrap/Card'
@@ -23,7 +24,8 @@ class Home extends Component {
       latitude: this.props.latitude ? this.props.latitude : "",
       longitude: this.props.longitude ? this.props.longitude : "",
       timezone:this.props.timezone ? this.props.timezone : "",
-      walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : ""
+      walkscoreObj: this.props.walkscoreObj ? this.props.walkscoreObj : "",
+      neighborObj: this.props.neighborObj ? this.props.neighborObj : ""
     };
   }
 
@@ -40,7 +42,8 @@ class Home extends Component {
             latitude: this.props.latitude,
             longitude: this.props.longitude,
             timezone:this.props.timezone,
-            walkscoreObj: this.props.walkscoreObj
+            walkscoreObj: this.props.walkscoreObj,
+            neighborObj: this.props.neighborObj
         });
     }
   }
@@ -63,6 +66,9 @@ class Home extends Component {
             </div>
             <div className="bikescore">
               <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
+            </div>
+            <div >
+              <AboutRes neighborObj={this.state.neighborObj}/>
             </div>
           </div>
         ) :

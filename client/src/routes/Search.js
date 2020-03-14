@@ -34,7 +34,8 @@ class Search extends Component {
       latitude: this.state.latitude,
       longitude: this.state.longitude,
       timezone:this.state.timezone,
-      walkscoreObj: this.state.walkscoreObj
+      walkscoreObj: this.state.walkscoreObj,
+      neighborObj: this.state.neighborObj
     };
     this.props.giveLocationData(locationData);
   }
@@ -64,6 +65,17 @@ class Search extends Component {
         console.log(error);
     });
 
+    axios.post('/neighbor', place)
+    .then(response => {
+      let a = response.data;
+      this.setState({
+        neighborObj: response.data
+      });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
     axios.post('/weather', place)
     .then(response => {
       this.setState({
@@ -74,6 +86,11 @@ class Search extends Component {
           weather: response.data.currently.summary,
           icon: (response.data.currently.icon).toUpperCase().replace(/-/g,'_'),
       });
+    })
+    .then( () => {
+      this.giveLocationDataFromSearch();
+      this.props.toggleSearch();
+
     })
     .then( () => {
       this.giveLocationDataFromSearch();
