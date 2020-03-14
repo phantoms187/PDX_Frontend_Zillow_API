@@ -16,7 +16,7 @@ class AboutBS extends Component {
         { this.props.bikescoreObj ?
           (
             <div>
-            <Bikescore score={this.props.bikescoreObj.score} description={this.props.bikescoreObj.description} />
+            <Bikescore score={this.props.bikescoreObj.bike.score} description={this.props.bikescoreObj.bike.description} />
             </div>
           ) :
           (
