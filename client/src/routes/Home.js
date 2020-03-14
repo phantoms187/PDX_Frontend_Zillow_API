@@ -46,45 +46,45 @@ class Home extends Component {
   }
 
   render (){
-    setTimeout(function(){}, 1000);
+    const walkScoreReady = this.state.walkscoreObj;
     return (
-    <div className="my-app">
-      { this.state.icon ?
-        (
-          <div className="box">
-            <div className="weather">
-            <span><WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} /></span>
+      <div className="my-app">
+        { walkScoreReady ?
+          (
+            <div className="box">
+              <div className="weather">
+              <span><WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} /></span>
+              </div>
+              <div className="address">
+              <span><Address {...this.state} /></span>
+              </div>
+              <div className="walkscore">
+              <AboutWS walkscoreObj={this.state.walkscoreObj}/>
+              </div>
+              <div className="bikescore">
+                <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
+              </div>
             </div>
-            <div className="address">
-            <span><Address {...this.state} /></span>
+          ) :
+          (
+            <div className="box-waiting">
+            <div className="waiting">
+              <Card>
+              <Card.Header>Welcome!</Card.Header>
+                <Card.Body>
+                  <Card.Text>
+                    <p>Enter an address using the Search Option above <span className="uparrow">&#8679;</span></p>
+                    <div className="ball-container">
+                      <div className="ball"></div>
+                    </div>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
             </div>
-            <div className="walkscore">
-            <AboutWS walkscoreObj={this.state.walkscoreObj}/>
             </div>
-            <div className="bikescore">
-              <AboutBS bikescoreObj={this.state.walkscoreObj.bike}/>
-            </div>
-          </div>
-        ) :
-        (
-          <div className="box-waiting">
-          <div className="waiting">
-            <Card>
-            <Card.Header>Welcome!</Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  <p>Enter an address using the Search Option above <span className="uparrow">&#8679;</span></p>
-                  <div className="ball-container">
-                    <div className="ball"></div>
-                  </div>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-          </div>
-        )
-      }
-    </div>
+          )
+        }
+      </div>
   );
  }
 }
