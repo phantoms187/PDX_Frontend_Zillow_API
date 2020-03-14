@@ -58,14 +58,12 @@ render() {
       <Card.Body>
         <Card.Text>
           <div>
-          //Use only positive number for lat/long and adjust direction letter appropriately
           {Math.abs((this.state.latitude).toFixed(3))}&#176;
           { (this.state.latitude) >=0 ? "N,   " : "S,   " }
           {Math.abs((this.state.longitude).toFixed(3))}&#176;
           { (this.state.longitude) >=0 ? "E" : "W" }
           </div>
           <div>
-            //Use css class to capitalize the time zone 
             <span className="capitalize">Timezone: {(this.state.timezone)}</span>
           </div>
         </Card.Text>

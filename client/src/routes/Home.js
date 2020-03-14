@@ -51,10 +51,8 @@ class Home extends Component {
   }
 
   render (){
-    //Set variables to state to know if a rerender is needed
     const walkScoreReady = this.state.walkscoreObj;
     const icon = this.state.icon;
-    //Options for the Canvas graph, setup taken directly fron canvasjs website
     const options = {
       title: {
         text: "Position"
@@ -69,11 +67,10 @@ class Home extends Component {
    }
 
     return (
-//Enclose in a single div to hold whole Home component
       <div className="my-app">
-      //Check if needed icon property is set otherwise show waiting screen
+
         { icon ?
-          (//Box formatted to place other componets using grid display
+          (
             <div className="box">
               <div className="weather">
               <span><WeatherIcon temperature={this.state.temperature} city={this.state.city} weatherIcon={this.state.icon} weatherForecast={this.state.weather} /></span>
@@ -84,7 +81,6 @@ class Home extends Component {
               <div className="chart">
               <CanvasJSChart options = {options} />
               </div>
-              //walkscoretakes longer sometimes to load so a second check is done
               { walkScoreReady ?
                 (
                     <div className="walkscore">
@@ -109,7 +105,7 @@ class Home extends Component {
                   ) }
             </div>
           ) :
-          (//If no address has been received yet then show a welcome screen
+          (
             <div className="box-waiting">
             <div className="waiting">
               <Card>
@@ -118,7 +114,6 @@ class Home extends Component {
                   <Card.Text>
                     <p>Enter an address using the Search Option above <span className="uparrow">&#8679;</span></p>
                     <div className="ball-container">
-                    //Added a fun animation to display my knowledge of css
                       <div className="ball"></div>
                     </div>
                   </Card.Text>
