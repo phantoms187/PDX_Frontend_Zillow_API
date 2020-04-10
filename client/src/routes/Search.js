@@ -73,6 +73,11 @@ class Search extends Component {
       });
     })
     .then( () => {
+
+      while(1){
+        if(this.state.temperature && this.state.walkscoreObj)
+          break;
+      }
       this.giveLocationDataFromSearch();
       this.props.toggleSearch();
 
