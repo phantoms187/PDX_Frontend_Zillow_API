@@ -1,6 +1,6 @@
 import React from 'react';
 import './Walkscore.css';
-import Collapsible from 'react-collapsible';
+import Card from 'react-bootstrap/Card'
 
 class Walkscore extends React.Component {
   //Return additional description of walkscore
@@ -22,34 +22,18 @@ class Walkscore extends React.Component {
   render() {
     let description_sec = this.addDescription(this.props.score);
     return (
-    <div>
-      <section className="walkscore_data">
-        <div className="walkscore_score">
-          walkscore
-          <h3>{this.props.score}</h3>
-        </div>
-        <div className="walkscore_desc_all">
-          <div className="walkscore_desc">
-            <h3>{this.props.description}</h3>
-          </div>
-          <div className="walkscore_desc_sec">
-          <br></br>{description_sec}
-          </div>
-        </div>
-      </section>
-      <Collapsible className="walkscore_detail" trigger="How Walk Score Works">
-        <p><h4>90–100: </h4>Walker’s Paradise<br></br>
-           Daily errands do not require a car</p>
-        <p><h4>70–89: </h4>Very Walkable<br></br>
-        Most errands can be accomplished on foot</p>
-        <p><h4>50–69: </h4>Somewhat Walkable<br></br>
-        Some errands can be accomplished on foot</p>
-        <p><h4>25–49: </h4>Car-Dependent<br></br>
-        Most errands require a car</p>
-        <p><h4>0–24: </h4>Car-Dependent<br></br>
-        Almost all errands require a car</p>
-      </Collapsible>
-      </div>
+      <Card className="my-address">
+      <Card.Header className="address-header">Walk Score</Card.Header>
+        <Card.Body>
+          <Card.Text>
+            <div>
+              <h2>{this.props.score}</h2>
+              <h5>{this.props.description}</h5>
+              <h5>{description_sec}</h5>
+            </div>
+          </Card.Text>
+        </Card.Body>
+      </Card>
     );
   }
 

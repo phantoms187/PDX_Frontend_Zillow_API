@@ -18,7 +18,8 @@ class Search extends Component {
           locationCity: '',
           locationState: '',
           locationZip: '',
-          errors: {}
+          errors: {},
+          neighborObj: ''
       };
   }
 
@@ -71,6 +72,11 @@ class Search extends Component {
         neighborObj: response.data
       });
     })
+    .then( () => {
+      this.giveLocationDataFromSearch();
+      this.props.toggleSearch();
+
+    })
     .catch((error) => {
         console.log(error);
     });
@@ -85,11 +91,6 @@ class Search extends Component {
           weather: response.data.currently.summary,
           icon: (response.data.currently.icon).toUpperCase().replace(/-/g,'_'),
       });
-    })
-    .then( () => {
-      this.giveLocationDataFromSearch();
-      this.props.toggleSearch();
-
     })
     .catch((error) => {
         console.log(error);

@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card';
 import './Home.css';
 //Import for Canvas to make graph
 import CanvasJSReact from '../canvasjs.react';
+import Restaurant from "../components/Restaurant";
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -67,7 +68,8 @@ class Home extends Component {
                 ]
             }]
     }
-
+    console.log(this.state.neighborObj);
+    const restaurant = this.props.neighborObj;
     return (
       <div className="my-app">
 
@@ -89,6 +91,9 @@ class Home extends Component {
               <div className="bikescore">
                 <AboutBS bikescoreObj={this.props.walkscoreObj}/>
               </div>
+              {/* <div>
+              <AboutRes neighborObj={this.props.neighborObj}/>
+              </div> */}
             </div>
           ) :
           (

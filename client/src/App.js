@@ -41,9 +41,10 @@ class App extends Component {
         neighborObj: locationData.neighborObj
       });
     }
-  }
+  } 
 
   render (){
+    console.log(this.state.neighborObj);
     return (
       <HashRouter>
         <Navigation  giveLocationData={this.getLocation}/>
