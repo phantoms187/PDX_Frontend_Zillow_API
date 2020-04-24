@@ -11,15 +11,15 @@ const fetch = require('node-fetch');
 
 dotenv.config();
 const port = process.env.PORT || 4000;
-const darkSkyAPI = process.env.darkSkyAPI || "50bf69053e2a6f09b468d70eba530349"; //For weather info
-const walkScoreAPI = process.env.walkScoreAPI || "6698dd1f586b5e3804c58da4f335cbc8";
+const darkSkyAPI = process.env.darkSkyAPI || ""; //For weather info
+const walkScoreAPI = process.env.walkScoreAPI || "";
 
 const fs = require('fs');
 //Variables and function for the geo-coordinates to translate address
 var NodeGeocoder = require('node-geocoder');
 var options = {
   provider: 'opencage',
-  apiKey: process.env.openCageAPI || "464ba334d812473fa18bc2b34e8ad854"
+  apiKey: process.env.openCageAPI || ""
 };
 var geocoder = NodeGeocoder(options);
 function getCoordinates(place) {
@@ -96,7 +96,7 @@ app.post('/neighbor', (req,res) => {
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-          "x-rapidapi-key": "8d488bea97msh3d5e1feb78b4ff6p1550e7jsnb35a6d4f5efa"
+          "x-rapidapi-key": ""
         }
       };
       axios.get(url,params)
